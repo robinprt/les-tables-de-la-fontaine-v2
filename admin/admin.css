@@ -1383,58 +1383,523 @@ a:hover {
 }
 
 /* ============================================================================
--- 12. RESPONSIVE MEDIA QUERIES
+-- 12. RESPONSIVE MEDIA QUERIES — MOBILE FIRST
 -- ============================================================================ */
 
+/* ---- Tablette (≤ 1024px) ---- */
 @media (max-width: 1024px) {
   .calendar-layout {
     grid-template-columns: 1fr;
   }
-}
-
-@media (max-width: 768px) {
-  .dashboard-wrapper {
-    flex-direction: column;
-  }
-  
-  .sidebar {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-  
-  .sidebar-header {
-    padding: 15px 20px;
-  }
-  
-  .sidebar-nav {
-    display: none; /* Can toggle using a mobile burger or let list stack simply */
-  }
-  
-  /* Simplify for mobile stacked navigation if preferred */
-  .sidebar-nav.active {
-    display: block;
-  }
-  
-  .main-content {
-    padding: 20px;
-    max-width: 100%;
-  }
-  
   .overview-grid {
     grid-template-columns: 1fr;
   }
-  
+  .main-content {
+    padding: 28px;
+  }
+}
+
+/* ---- Mobile (≤ 768px) ---- */
+@media (max-width: 768px) {
+
+  /* === LAYOUT GLOBAL === */
+  .dashboard-wrapper {
+    flex-direction: column;
+    padding-bottom: 72px; /* espace pour la bottom nav */
+  }
+
+  /* === SIDEBAR → HEADER COMPACT === */
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    height: 60px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-shrink: 0;
+  }
+
+  .sidebar-header {
+    padding: 0;
+    border-bottom: none;
+    flex: 1;
+  }
+
+  .sidebar-branding h3 {
+    font-size: 16px;
+  }
+
+  .sidebar-branding span {
+    display: none;
+  }
+
+  /* Navigation verticale cachée sur mobile (remplacée par bottom nav) */
+  .sidebar-nav {
+    display: none;
+  }
+
+  /* Footer sidebar visible sur mobile comme bouton logout compact */
+  .sidebar-footer {
+    padding: 0;
+    border: none;
+  }
+
+  .sidebar-footer .user-info {
+    display: none;
+  }
+
+  .logout-btn {
+    width: auto;
+    padding: 8px 12px;
+    font-size: 12px;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .logout-btn svg {
+    margin-right: 0;
+    width: 14px;
+    height: 14px;
+  }
+
+  /* === BOTTOM NAVIGATION BAR === */
+  .mobile-bottom-nav {
+    display: flex !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    background-color: var(--color-dark);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    height: 72px;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .mobile-bottom-nav button {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: transparent;
+    border: none;
+    color: #718096;
+    font-family: var(--font-family);
+    font-size: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 8px 4px;
+    position: relative;
+    min-height: 44px; /* touch target */
+  }
+
+  .mobile-bottom-nav button.active {
+    color: var(--color-secondary);
+  }
+
+  .mobile-bottom-nav button svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2px;
+  }
+
+  .mobile-bottom-nav .mob-badge {
+    position: absolute;
+    top: 6px;
+    right: calc(50% - 16px);
+    background-color: var(--color-warning);
+    color: var(--color-dark);
+    font-size: 9px;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 1px 5px;
+    line-height: 1.4;
+  }
+
+  /* === MAIN CONTENT === */
+  .main-content {
+    padding: 16px;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* === HEADER DES SECTIONS === */
+  .content-header h1 {
+    font-size: 20px;
+  }
+
+  .content-header p {
+    font-size: 13px;
+  }
+
+  .content-header {
+    margin-bottom: 16px;
+  }
+
+  .flex-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .header-actions-row {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .header-actions-row .btn {
+    flex: 1;
+    min-width: 120px;
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  /* === STATS GRID === */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .stat-card {
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 0;
+  }
+
+  .stat-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .stat-value {
+    font-size: 22px;
+  }
+
+  /* === OVERVIEW GRID → 1 col === */
+  .overview-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  /* === PANEL CARDS === */
+  .panel-card {
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+  }
+
+  .panel-card h3 {
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+
+  /* === FILTRES → COMPACTS === */
+  .filter-bar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+
+  .filter-group {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .filter-group-actions {
+    width: 100%;
+  }
+
+  .filter-group-actions .btn {
+    width: 100%;
+  }
+
+  /* === TABLES → CARDS SUR MOBILE === */
+  /* On cache les colonnes secondaires et on rend le tout scrollable */
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--border-radius);
+  }
+
+  /* Le tableau des réservations devient plus lisible */
+  #bookingsTable th:nth-child(4),   /* Téléphone */
+  #bookingsTable td:nth-child(4),
+  #bookingsTable th:nth-child(6),   /* Type */
+  #bookingsTable td:nth-child(6) {
+    display: none;
+  }
+
+  .data-table th {
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+
+  .data-table td {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .actions-cell {
+    gap: 6px;
+  }
+
+  .btn-icon {
+    width: 38px;
+    height: 38px; /* touch friendly */
+  }
+
+  /* === FORMULAIRE HORAIRES === */
+  /* Tableau horaires → scroll horizontal */
+  #hoursForm .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* === CALENDRIER === */
+  .calendar-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .calendar-day {
+    min-height: 60px;
+    padding: 4px;
+  }
+
+  .day-number {
+    font-size: 12px;
+  }
+
+  .day-covers-chip {
+    font-size: 9px;
+    padding: 1px 4px;
+  }
+
+  .calendar-controls h2 {
+    font-size: 15px;
+    min-width: 100px;
+  }
+
+  /* === GALERIE === */
+  .admin-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .gallery-filters {
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-bottom: 14px;
+  }
+
+  .gallery-filter-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  /* === AVIS === */
+  .reviews-list-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* === FORMULAIRES ÉDITEUR === */
   .form-row-editor {
     grid-template-columns: 1fr;
     gap: 0;
   }
+
   .form-row-editor.flex-three {
     grid-template-columns: 1fr;
   }
-  
+
+  .form-group-editor {
+    margin-bottom: 12px;
+  }
+
+  .form-group-editor label {
+    font-size: 13px;
+  }
+
+  /* === FORM ACTIONS BAR === */
+  .form-actions-bar {
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 16px;
+  }
+
+  .form-actions-bar .btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  /* === MODALES → FULL SCREEN === */
+  .admin-modal {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  .admin-modal .modal-content {
+    height: 100%;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .admin-modal .modal-header {
+    flex-shrink: 0;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--color-gray-border);
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 10;
+  }
+
+  .admin-modal .modal-header h2 {
+    font-size: 17px;
+  }
+
+  .admin-modal .modal-body {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 16px 20px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    margin-top: 0;
+    padding: 16px 20px;
+    background: white;
+    border-top: 1px solid var(--color-gray-border);
+    position: sticky;
+    bottom: 0;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  /* === BOOKING DETAIL GRID === */
   .booking-detail-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  /* === QUICK ACTIONS === */
+  .quick-actions {
+    gap: 10px;
+  }
+
+  .quick-actions .btn {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 13.5px;
+  }
+
+  /* === MENU CART === */
+  .menu-tabs-row {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .sub-tab-btn {
+    flex: 1;
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+
+  .menu-category-section {
+    margin-bottom: 20px;
+  }
+
+  .menu-category-header {
+    padding: 12px 14px;
+  }
+
+  /* === LIENS EXTERNES === */
+  #adminLinksList td:nth-child(3), /* URL */
+  #adminLinksList th:nth-child(3),
+  #adminLinksList td:nth-child(5), /* Ordre */
+  #adminLinksList th:nth-child(5) {
+    display: none;
+  }
+
+  /* === TEXTES DU SITE === */
+  .content-sections-editor .panel-card {
+    padding: 14px;
+  }
+
+  /* === BOUTONS DE STATUT (détail réservation) === */
+  .detail-status-editor > div[style] {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .detail-status-editor .btn {
+    width: 100%;
+    padding: 12px;
+  }
+
+  /* === IMAGE UPLOAD ZONE === */
+  .image-upload-zone {
+    padding: 20px 16px;
+  }
+}
+
+/* ---- Très petits écrans (≤ 375px) ---- */
+@media (max-width: 375px) {
+  .stats-grid {
     grid-template-columns: 1fr;
-    gap: 15px;
+  }
+
+  .main-content {
+    padding: 12px;
+  }
+
+  .stat-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .stat-icon {
+    margin-right: 0;
+    flex-shrink: 0;
+  }
+
+  .admin-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
