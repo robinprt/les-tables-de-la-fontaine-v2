@@ -356,12 +356,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 .logo-title {
     font-family: var(--font-titles);
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: var(--color-white);
     line-height: 1.1;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
     transition: color var(--transition-normal);
 }
 
@@ -384,7 +385,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 .nav-menu ul {
     display: flex;
-    gap: 28px;
+    gap: 18px;
+    white-space: nowrap;
 }
 
 .nav-menu a {
