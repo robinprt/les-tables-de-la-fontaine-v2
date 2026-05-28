@@ -85,33 +85,37 @@
             </nav>
 
             <div class="header-actions">
-<a href="reservation.html" class="btn btn-secondary nav-action-btn">Réserver</a>
-            </div>
+                <a href="reservation.html" class="btn btn-secondary nav-action-btn">Réserver</a>
 
-            <button class="burger-btn" id="burgerBtn" aria-label="Ouvrir le menu">
-                <span></span><span></span><span></span>
-            </button>
+                <button class="burger-menu" id="burgerToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu">
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- Mobile Nav -->
-    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
-    <nav class="mobile-nav-menu">
-        <ul>
-            <li><a href="index.html" class="mobile-nav-link">Accueil</a></li>
-            <li><a href="carte.html" class="mobile-nav-link">La Carte</a></li>
-            <li><a href="le-lieu.html" class="mobile-nav-link">Le Lieu</a></li>
-            <li><a href="actualites.html" class="mobile-nav-link">Actualités</a></li>
-            <li><a href="contact.html" class="mobile-nav-link">Contact & Accès</a></li>
-            <li><a href="reservation.html" class="mobile-nav-link btn btn-primary">Réserver une table</a></li>
-        </ul>
-        <div class="mobile-nav-footer">
-            <a href="tel:+33635345967" class="mobile-contact-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1A11.56 11.56 0 018.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/></svg>
-                06 35 34 59 67
-            </a>
-        </div>
-    </nav>
+    <!-- Menu Mobile Coulissant (Overlay) -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <nav class="mobile-nav-menu">
+            <ul>
+                <li><a href="index.html" class="mobile-nav-link">Accueil</a></li>
+                <li><a href="carte.html" class="mobile-nav-link">La Carte</a></li>
+                <li><a href="le-lieu.html" class="mobile-nav-link">Le Lieu</a></li>
+                <li><a href="actualites.html" class="mobile-nav-link">Actualités</a></li>
+                <li><a href="contact.html" class="mobile-nav-link">Contact & Accès</a></li>
+                <li><a href="reservation.html" class="mobile-nav-link btn btn-primary">Réserver une table</a></li>
+            </ul>
+            <div class="mobile-nav-footer">
+                <a href="tel:+33635345967" class="mobile-contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1A11.56 11.56 0 018.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/></svg>
+                    06 35 34 59 67
+                </a>
+                <p class="mobile-address-item">540 chemin de Bimbo, Biscarrosse</p>
+            </div>
+        </nav>
+    </div>
 
     <!-- Header Banner -->
     <section class="page-header-section">
