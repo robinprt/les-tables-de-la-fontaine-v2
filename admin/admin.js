@@ -5,7 +5,8 @@
  */
 
 // Variables globales
-let supabase = null;
+// NOTE: 'supabaseClient' est utilisé pour éviter le conflit avec window.supabase (SDK CDN)
+let supabaseClient = null;
 let currentSession = null;
 let activeTab = 'overview';
 let siteData = {}; // Cache public
@@ -17,25 +18,26 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 /**
- * Initialise l'application : récupère les clés d'API et configure Supabase Auth
+ * Initialise l'application admin avec Supabase Auth
+ * Les clés sont lues depuis les meta tags injectés par la page HTML
+ * (SUPABASE_ANON_KEY est une clé publique, safe à exposer côté client)
  */
 async function initAdminApp() {
   try {
-    // 1. Appeler l'API de contenu public pour obtenir les clés Supabase (évite de les stocker dans le JS)
-    const res = await fetch('/api/get-site-content');
-    const data = await res.json();
-    
-    if (!data.success || !data.supabase_url || !data.supabase_anon_key) {
-      throw new Error("Impossible de charger les configurations Supabase.");
+    // 1. Lire les clés depuis les meta tags
+    const supabaseUrl = document.querySelector('meta[name="supabase-url"]')?.content;
+    const supabaseAnonKey = document.querySelector('meta[name="supabase-anon-key"]')?.content;
+
+    if (!supabaseUrl || supabaseUrl === 'SUPABASE_URL_PLACEHOLDER' ||
+        !supabaseAnonKey || supabaseAnonKey === 'SUPABASE_ANON_KEY_PLACEHOLDER') {
+      throw new Error("Clés Supabase non configurées. Vérifiez les variables d'environnement Vercel.");
     }
 
-    siteData = data;
-
-    // 2. Initialiser le client Supabase
-    supabase = supabase.createClient(data.supabase_url, data.supabase_anon_key);
+    // 2. Initialiser le client Supabase (window.supabase = SDK chargé via CDN)
+    supabaseClient = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
 
     // 3. Écouter les changements d'état d'authentification
-    supabase.auth.onAuthStateChange((event, session) => {
+    supabaseClient.auth.onAuthStateChange((event, session) => {
       currentSession = session;
       handleAuthState(session);
     });
@@ -50,9 +52,15 @@ async function initAdminApp() {
     // 6. Configurer la navigation par onglets
     setupTabNavigation();
 
+    // 7. Charger les données de contenu en arrière-plan (non bloquant)
+    fetch('/api/get-site-content')
+      .then(r => r.json())
+      .then(data => { if (data.success) siteData = data; })
+      .catch(err => console.warn('Contenu dynamique non disponible:', err));
+
   } catch (error) {
     console.error("Initialization error:", error);
-    showLoginFeedback("Erreur critique d'initialisation : " + error.message, "error");
+    showLoginFeedback("Erreur d'initialisation : " + error.message, "error");
   }
 }
 
@@ -92,7 +100,7 @@ async function handleLogin(e) {
   hideLoginFeedback();
 
   try {
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
     if (error) throw error;
     
     // L'état de connexion va changer et être capté par onAuthStateChange
@@ -107,7 +115,7 @@ async function handleLogin(e) {
  */
 async function handleLogout() {
   if (confirm("Voulez-vous vous déconnecter ?")) {
-    await supabase.auth.signOut();
+    await supabaseClient.auth.signOut();
   }
 }
 
@@ -162,7 +170,7 @@ async function apiFetch(endpoint, method = 'GET', body = null) {
   
   if (res.status === 401) {
     // JWT expiré ou non valide
-    await supabase.auth.signOut();
+    await supabaseClient.auth.signOut();
     throw new Error("Votre session a expiré. Veuillez vous reconnecter.");
   }
 
