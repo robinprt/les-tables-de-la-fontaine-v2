@@ -833,7 +833,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================
-       9. PAGE ACTUALITÉS — RENDU DYNAMIQUE
+       9. PAGE ACTUALITÉS - RENDU DYNAMIQUE
        ========================================== */
     const actualitesGrid = document.getElementById('actualitesGrid');
     if (actualitesGrid) {
@@ -877,7 +877,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================
-       10. TRACKING GA4 — ÉVÉNEMENTS CLÉS
+       10. TRACKING GA4 - ÉVÉNEMENTS CLÉS
        ========================================== */
     const track = (eventName, params = {}) => {
         if (typeof gtag === 'function') gtag('event', eventName, params);
