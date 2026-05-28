@@ -112,6 +112,12 @@
                         </button>
                     </li>
                     <li>
+                        <button class="nav-tab-btn" data-tab="actualites">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                            Actualités
+                        </button>
+                    </li>
+                    <li>
                         <button class="nav-tab-btn" data-tab="content">
                             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                             Textes du Site
@@ -481,6 +487,20 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </section>
+
+            <!-- VUE: ACTUALITÉS -->
+            <section id="tab-actualites" class="tab-content">
+                <div class="content-header flex-header">
+                    <div>
+                        <h1>Actualités</h1>
+                        <p>Publiez des annonces, brunchs, événements ou nouveautés visibles sur le site</p>
+                    </div>
+                    <button id="addActualiteBtn" class="btn btn-primary">Nouvelle actualité</button>
+                </div>
+                <div class="reviews-list-grid" id="adminActualitesList">
+                    <!-- Rempli dynamiquement -->
                 </div>
             </section>
 
@@ -934,6 +954,49 @@
                     <div class="form-actions-bar modal-actions">
                         <button type="button" class="btn btn-outline-dark" onclick="document.getElementById('linkModal').close()">Annuler</button>
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- 8. MODALE ACTUALITÉ -->
+    <dialog id="actualiteModal" class="admin-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="actualiteModalTitle">Nouvelle actualité</h2>
+                <button type="button" class="close-modal-btn" onclick="document.getElementById('actualiteModal').close()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="actualiteForm" class="modal-form">
+                    <input type="hidden" id="actId">
+                    <div class="form-group-editor">
+                        <label for="actTitre">Titre *</label>
+                        <input type="text" id="actTitre" required placeholder="ex: Nouveau brunch dominical !">
+                    </div>
+                    <div class="form-group-editor">
+                        <label for="actSousTitre">Sous-titre</label>
+                        <input type="text" id="actSousTitre" placeholder="ex: Disponible tous les dimanches de 10h à 14h">
+                    </div>
+                    <div class="form-group-editor">
+                        <label for="actContenu">Contenu *</label>
+                        <textarea id="actContenu" rows="6" required placeholder="Écrivez le texte de votre actualité..."></textarea>
+                    </div>
+                    <div class="form-group-editor">
+                        <label for="actPhotoUrl">URL de la photo</label>
+                        <input type="url" id="actPhotoUrl" placeholder="https://...">
+                        <small style="color:var(--color-text-muted);font-size:12px;">URL d'une image déjà uploadée dans la Galerie ou lien externe direct.</small>
+                    </div>
+                    <div class="form-group-editor checkbox-row">
+                        <input type="checkbox" id="actPublie" checked>
+                        <label for="actPublie">Publier immédiatement sur le site</label>
+                    </div>
+                    <div class="form-actions-bar modal-actions">
+                        <button type="button" class="btn btn-outline-dark" onclick="document.getElementById('actualiteModal').close()">Annuler</button>
+                        <button type="submit" id="actualiteSubmitBtn" class="btn btn-primary">
+                            <span class="btn-text">Enregistrer</span>
+                            <span class="loader hidden"></span>
+                        </button>
                     </div>
                 </form>
             </div>

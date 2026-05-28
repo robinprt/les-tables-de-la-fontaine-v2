@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page introuvable | Les Tables de la Fontaine — Biscarrosse</title>
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://lestablesdelafontaine-biscarrosse.fr/">
+    <link rel="icon" type="image/jpeg" href="Images/logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .error-page {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .error-code {
+            font-family: var(--font-titles);
+            font-size: 8rem;
+            color: var(--color-sand);
+            line-height: 1;
+            margin-bottom: 0;
+        }
+        .error-title {
+            font-family: var(--font-titles);
+            font-size: 2rem;
+            color: var(--color-anthracite);
+            margin: 10px 0 20px;
+        }
+        .error-desc {
+            color: #666;
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+            max-width: 480px;
+        }
+        .error-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header" id="header">
+        <div class="header-container container">
+            <a href="index.html" class="logo-group">
+                <img src="Images/logo.jpg" alt="Logo Les Tables de la Fontaine" class="header-logo">
+                <div class="logo-text">
+                    <span class="logo-title">Les Tables de la Fontaine</span>
+                    <span class="logo-subtitle">Restaurant & Bar à Cocktails</span>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="error-page">
+            <div>
+                <p class="error-code">404</p>
+                <h1 class="error-title">Page introuvable</h1>
+                <p class="error-desc">Cette page n'existe pas ou a été déplacée. Retrouvez nos informations et réservez votre table depuis l'accueil.</p>
+                <div class="error-links">
+                    <a href="index.html" class="btn btn-primary">Retour à l'accueil</a>
+                    <a href="reservation.html" class="btn btn-secondary">Réserver une table</a>
+                    <a href="tel:+33635345967" class="btn btn-outline-dark">06 35 34 59 67</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p>&copy; 2026 Les Tables de la Fontaine. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

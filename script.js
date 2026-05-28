@@ -250,74 +250,63 @@ document.addEventListener('DOMContentLoaded', () => {
     const initLightbox = () => {
         const galleryItems = document.querySelectorAll('.gallery-item');
         const lightboxDialog = document.getElementById('lightboxDialog');
-        const lightboxImage = document.getElementById('lightboxImage');
-        const lightboxCaption = document.getElementById('lightboxCaption');
-        const closeLightbox = document.getElementById('closeLightbox');
 
-        if (galleryItems.length === 0 || !lightboxDialog || !lightboxImage || !lightboxCaption || !closeLightbox) return;
+        if (galleryItems.length === 0 || !lightboxDialog) return;
+
+        // Cloner le dialogue en premier pour purger les anciens listeners
+        const dialog = lightboxDialog.cloneNode(true);
+        lightboxDialog.parentNode.replaceChild(dialog, lightboxDialog);
+
+        // Résoudre les éléments depuis le nouveau dialogue
+        const lightboxImage = dialog.querySelector('#lightboxImage');
+        const lightboxCaption = dialog.querySelector('#lightboxCaption');
+
+        const closeFn = () => {
+            dialog.close();
+            if (lightboxImage) lightboxImage.setAttribute('src', '');
+        };
+
+        // Fermeture via backdrop
+        dialog.addEventListener('click', (e) => {
+            if (e.target === dialog) closeFn();
+        });
+
+        // Fermeture via bouton
+        const closeBtn = dialog.querySelector('#closeLightbox');
+        if (closeBtn) closeBtn.addEventListener('click', closeFn);
+
+        // Fermeture via Échap (natif au dialog, mais on reset l'image)
+        dialog.addEventListener('close', () => {
+            if (lightboxImage) lightboxImage.setAttribute('src', '');
+        });
 
         galleryItems.forEach(item => {
             const openLightbox = () => {
                 const fullSrc = item.getAttribute('data-src');
                 const img = item.querySelector('img');
                 const altText = img ? img.getAttribute('alt') : 'Photo';
-                const captionText = item.getAttribute('aria-label') 
-                    ? item.getAttribute('aria-label').replace("Agrandir l'image : ", "") 
-                    : "";
-                
-                lightboxImage.setAttribute('src', fullSrc);
-                lightboxImage.setAttribute('alt', altText);
-                lightboxCaption.textContent = captionText;
-                
-                lightboxDialog.showModal();
+                const captionText = item.getAttribute('aria-label')
+                    ? item.getAttribute('aria-label').replace("Agrandir l'image : ", '')
+                    : '';
+
+                if (lightboxImage) {
+                    lightboxImage.setAttribute('src', fullSrc);
+                    lightboxImage.setAttribute('alt', altText);
+                }
+                if (lightboxCaption) lightboxCaption.textContent = captionText;
+
+                dialog.showModal();
             };
 
-            // Cloner et remplacer pour éviter les écouteurs dupliqués
+            // Cloner pour éviter les écouteurs dupliqués
             const newItem = item.cloneNode(true);
             item.parentNode.replaceChild(newItem, item);
 
             newItem.addEventListener('click', openLightbox);
-            
             newItem.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    openLightbox();
-                }
+                if (e.key === 'Enter') openLightbox();
             });
         });
-
-        // Cloner le bouton fermer
-        const newCloseLightbox = closeLightbox.cloneNode(true);
-        closeLightbox.parentNode.replaceChild(newCloseLightbox, closeLightbox);
-
-        const handleCloseLightbox = () => {
-            lightboxDialog.close();
-            lightboxImage.setAttribute('src', '');
-        };
-
-        newCloseLightbox.addEventListener('click', handleCloseLightbox);
-
-        // Cloner le dialogue pour purger d'anciens listeners de backdrop
-        const newLightboxDialog = lightboxDialog.cloneNode(true);
-        lightboxDialog.parentNode.replaceChild(newLightboxDialog, lightboxDialog);
-
-        // Ré-attacher la fermeture sur le nouveau dialogue
-        newLightboxDialog.addEventListener('click', (e) => {
-            if (e.target === newLightboxDialog) {
-                newLightboxDialog.close();
-                const newImg = newLightboxDialog.querySelector('#lightboxImage');
-                if (newImg) newImg.setAttribute('src', '');
-            }
-        });
-        
-        // Re-lier les éléments fermer
-        const actualClose = newLightboxDialog.querySelector('#closeLightbox');
-        if (actualClose) {
-            actualClose.addEventListener('click', () => {
-                newLightboxDialog.close();
-                const newImg = newLightboxDialog.querySelector('#lightboxImage');
-                if (newImg) newImg.setAttribute('src', '');
-            });
-        }
     };
 
     // Initialisation initiale de la lightbox
@@ -844,7 +833,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================
-       9. CHARGEMENT DIFFERE GOOGLE MAPS (SI PRESENT)
+       9. PAGE ACTUALITÉS — RENDU DYNAMIQUE
+       ========================================== */
+    const actualitesGrid = document.getElementById('actualitesGrid');
+    if (actualitesGrid) {
+        fetch('/api/get-site-content')
+            .then(r => r.json())
+            .then(data => {
+                const loading = document.getElementById('actualitesLoading');
+                const empty = document.getElementById('actualitesEmpty');
+                if (loading) loading.classList.add('hidden');
+
+                const list = (data.actualites || []);
+                if (list.length === 0) {
+                    if (empty) empty.classList.remove('hidden');
+                    return;
+                }
+
+                actualitesGrid.classList.remove('hidden');
+                list.forEach(actu => {
+                    const article = document.createElement('article');
+                    article.className = 'actualite-card';
+                    const date = new Date(actu.created_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+                    article.innerHTML = `
+                        ${actu.photo_url ? `<div class="actualite-img"><img src="${actu.photo_url}" alt="${actu.titre}" loading="lazy"></div>` : ''}
+                        <div class="actualite-body">
+                            <time class="actualite-date">${date}</time>
+                            <h2 class="actualite-titre">${actu.titre}</h2>
+                            ${actu.sous_titre ? `<p class="actualite-sous-titre">${actu.sous_titre}</p>` : ''}
+                            <p class="actualite-contenu">${actu.contenu.replace(/\n/g, '<br>')}</p>
+                        </div>
+                    `;
+                    actualitesGrid.appendChild(article);
+                });
+            })
+            .catch(() => {
+                const loading = document.getElementById('actualitesLoading');
+                const empty = document.getElementById('actualitesEmpty');
+                if (loading) loading.classList.add('hidden');
+                if (empty) empty.classList.remove('hidden');
+            });
+    }
+
+
+    /* ==========================================
+       10. TRACKING GA4 — ÉVÉNEMENTS CLÉS
+       ========================================== */
+    const track = (eventName, params = {}) => {
+        if (typeof gtag === 'function') gtag('event', eventName, params);
+    };
+
+    document.addEventListener('click', (e) => {
+        const tel = e.target.closest('a[href^="tel:"]');
+        if (tel) track('clic_telephone', { event_category: 'Contact', event_label: tel.href });
+
+        const maps = e.target.closest('a[href*="google.com/maps"], a[href*="share.google"], a[href*="maps.app"]');
+        if (maps) track('clic_itineraire', { event_category: 'Contact', event_label: 'Google Maps' });
+
+        const resa = e.target.closest('a[href="reservation.html"], a[href$="/reservation"]');
+        if (resa) track('clic_reservation', { event_category: 'Conversion', event_label: resa.textContent.trim().substring(0, 50) });
+
+        const carte = e.target.closest('a[href="carte.html"], a[href$="/carte"]');
+        if (carte) track('clic_carte', { event_category: 'Navigation', event_label: 'Voir la carte' });
+    });
+
+    const bookingFormGA = document.getElementById('bookingForm');
+    if (bookingFormGA) {
+        bookingFormGA.addEventListener('submit', () => {
+            track('soumission_reservation', { event_category: 'Conversion', event_label: 'Formulaire' });
+        });
+    }
+
+
+    /* ==========================================
+       11. CHARGEMENT DIFFERE GOOGLE MAPS (SI PRESENT)
        ========================================== */
     const loadMapBtn = document.getElementById('loadMapBtn');
     const mapPlaceholder = document.getElementById('mapPlaceholder');
@@ -872,7 +934,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================
-       10. BOUTON RETOUR EN HAUT (BACK TO TOP)
+       12. BOUTON RETOUR EN HAUT (BACK TO TOP)
        ========================================== */
     const backToTopBtn = document.getElementById('backToTopBtn');
 

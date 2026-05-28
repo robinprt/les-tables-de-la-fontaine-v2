@@ -3,22 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Analytics 4 — remplacer G-XXXXXXXXXX par votre Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
     
     <!-- SEO Local -->
-    <title>Le Lieu & Galerie | Les Tables de la Fontaine à Biscarrosse</title>
-    <meta name="description" content="Découvrez le cadre idyllique du restaurant Les Tables de la Fontaine à Biscarrosse. Une terrasse chaleureuse sous les pins landais à quelques minutes du lac.">
+    <title>Terrasse sous les pins & Galerie | Les Tables de la Fontaine à Biscarrosse</title>
+    <meta name="description" content="Découvrez la terrasse en bois sous les pins landais du restaurant Les Tables de la Fontaine à Biscarrosse, à proximité du lac. Cadre naturel, convivial et authentique.">
     <link rel="canonical" href="https://lestablesdelafontaine-biscarrosse.fr/le-lieu.html">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Le Lieu & Galerie | Les Tables de la Fontaine">
-    <meta property="og:description" content="Une terrasse en bois ombragée par les pins, un bar extérieur, et une ambiance pure vacances à Biscarrosse. Photos de notre restaurant.">
+    <meta property="og:title" content="Terrasse & Cadre Nature | Les Tables de la Fontaine à Biscarrosse">
+    <meta property="og:description" content="Une terrasse en bois ombragée par les pins landais, un bar extérieur et une ambiance pure vacances à Biscarrosse. Photos de notre restaurant.">
     <meta property="og:url" content="https://lestablesdelafontaine-biscarrosse.fr/le-lieu.html">
-    <meta property="og:image" content="Images/Terasse.webp">
+    <meta property="og:image" content="https://lestablesdelafontaine-biscarrosse.fr/Images/Terasse.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Terrasse en bois sous les pins du restaurant Les Tables de la Fontaine">
     <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Les Tables de la Fontaine">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Terrasse & Cadre Nature | Les Tables de la Fontaine Biscarrosse">
+    <meta name="twitter:description" content="Terrasse en bois sous les pins landais, bar extérieur, ambiance vacances. Découvrez le cadre naturel de notre restaurant à Biscarrosse.">
+    <meta name="twitter:image" content="https://lestablesdelafontaine-biscarrosse.fr/Images/Terasse.webp">
+    <meta name="twitter:image:alt" content="Terrasse du restaurant Les Tables de la Fontaine à Biscarrosse">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="Images/logo.jpg">
+    <link rel="icon" type="image/jpeg" href="Images/logo.jpg">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +47,18 @@
     
     <!-- Styles CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Données structurées JSON-LD — BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://lestablesdelafontaine-biscarrosse.fr/"},
+        {"@type": "ListItem", "position": 2, "name": "Le Lieu & Galerie", "item": "https://lestablesdelafontaine-biscarrosse.fr/le-lieu.html"}
+      ]
+    }
+    </script>
 </head>
 <body>
 
@@ -46,6 +78,7 @@
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="carte.html">La Carte</a></li>
                     <li><a href="le-lieu.html">Le Lieu</a></li>
+                    <li><a href="actualites.html">Actualités</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="reservation.html" class="nav-book-link">Réserver</a></li>
                 </ul>
@@ -74,6 +107,7 @@
                 <li><a href="index.html" class="mobile-nav-link">Accueil</a></li>
                 <li><a href="carte.html" class="mobile-nav-link">La Carte</a></li>
                 <li><a href="le-lieu.html" class="mobile-nav-link">Le Lieu</a></li>
+                <li><a href="actualites.html" class="mobile-nav-link">Actualités</a></li>
                 <li><a href="contact.html" class="mobile-nav-link">Contact & Accès</a></li>
                 <li><a href="reservation.html" class="mobile-nav-link btn btn-primary">Réserver une table</a></li>
             </ul>
@@ -90,8 +124,8 @@
     <!-- Header Banner -->
     <section class="page-header-section">
         <div class="container">
-            <h1>Le Lieu</h1>
-            <p>Un petit coin de paradis verdoyant et boisé à Biscarrosse</p>
+            <h1>Notre terrasse sous les pins à Biscarrosse — Le cadre du restaurant</h1>
+            <p>Un cadre naturel, verdoyant et boisé au 540 chemin de Bimbo, à proximité du lac de Biscarrosse</p>
         </div>
     </section>
 
@@ -135,7 +169,7 @@
                 
                 <div class="place-visual">
                     <div class="main-image-card">
-                        <img src="Images/devanture resto.webp" alt="Devanture du restaurant Les Tables de la Fontaine" loading="lazy" class="rounded-img">
+                        <img src="Images/devanture-resto.webp" alt="Devanture du restaurant Les Tables de la Fontaine" loading="lazy" class="rounded-img">
                         <div class="visual-badge">
                             <span class="badge-number">100%</span>
                             <span class="badge-label">Nature & Plein air</span>
@@ -143,7 +177,7 @@
                     </div>
                     <div class="secondary-images">
                         <img src="Images/exterieur2.webp" alt="Terrasse en bois extérieure" loading="lazy" class="rounded-img">
-                        <img src="Images/interieur%20.webp" alt="Salle de restaurant" loading="lazy" class="rounded-img">
+                        <img src="Images/interieur.webp" alt="Salle de restaurant" loading="lazy" class="rounded-img">
                     </div>
                 </div>
             </div>
@@ -160,8 +194,8 @@
                 
                 <div class="gallery-grid">
                     <!-- Photo 1 - devanture resto -->
-                    <div class="gallery-item" role="button" tabindex="0" aria-label="Agrandir l'image : Devanture du restaurant" data-src="Images/devanture resto.webp">
-                        <img src="Images/devanture resto.webp" alt="Devanture chaleureuse du restaurant Les Tables de la Fontaine" loading="lazy">
+                    <div class="gallery-item" role="button" tabindex="0" aria-label="Agrandir l'image : Devanture du restaurant" data-src="Images/devanture-resto.webp">
+                        <img src="Images/devanture-resto.webp" alt="Devanture chaleureuse du restaurant Les Tables de la Fontaine" loading="lazy">
                         <div class="gallery-overlay">
                             <span>Zoomer</span>
                         </div>
@@ -176,8 +210,8 @@
                     </div>
 
                     <!-- Photo 3 - Intérieur -->
-                    <div class="gallery-item" role="button" tabindex="0" aria-label="Agrandir l'image : Ambiance de la salle" data-src="Images/interieur .webp">
-                        <img src="Images/interieur .webp" alt="Salle de restaurant conviviale décorée avec soin" loading="lazy">
+                    <div class="gallery-item" role="button" tabindex="0" aria-label="Agrandir l'image : Ambiance de la salle" data-src="Images/interieur.webp">
+                        <img src="Images/interieur.webp" alt="Salle de restaurant conviviale décorée avec soin" loading="lazy">
                         <div class="gallery-overlay">
                             <span>Zoomer</span>
                         </div>
@@ -208,8 +242,8 @@
                     </div>
 
                     <!-- Photo 7 - Tireuse terrasse / Bar -->
-                    <div class="gallery-item" role="button" tabindex="0" aria-label="Agrandir l'image : Bar extérieur et tireuse à bière" data-src="Images/tireuse a biere terasse.webp">
-                        <img src="Images/tireuse a biere terasse.webp" alt="Tireuse à bière en bois sur la terrasse extérieure" loading="lazy">
+                    <div class="gallery-item" role="button" tabindex="0" aria-label="Agrandir l'image : Bar extérieur et tireuse à bière" data-src="Images/tireuse-biere-terrasse.webp">
+                        <img src="Images/tireuse-biere-terrasse.webp" alt="Tireuse à bière en bois sur la terrasse extérieure" loading="lazy">
                         <div class="gallery-overlay">
                             <span>Zoomer</span>
                         </div>
@@ -264,6 +298,7 @@
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="carte.html">La Carte</a></li>
                     <li><a href="le-lieu.html">Le Lieu</a></li>
+                    <li><a href="actualites.html">Actualités</a></li>
                     <li><a href="contact.html">Contact & Accès</a></li>
                     <li><a href="reservation.html">Réservation</a></li>
                 </ul>
@@ -300,17 +335,9 @@
 
     <!-- Barre Fixe Mobile Tactile -->
     <div class="mobile-sticky-bar">
-        <a href="tel:+33635345967" class="mobile-sticky-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1A11.56 11.56 0 018.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/></svg>
-            <span>Appeler</span>
-        </a>
         <a href="reservation.html" class="mobile-sticky-item center-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            <span>Réserver</span>
-        </a>
-        <a href="contact.html" class="mobile-sticky-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"></circle><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"></path></svg>
-            <span>Itinéraire</span>
+            <span>Réserver une table</span>
         </a>
     </div>
 

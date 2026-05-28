@@ -2192,81 +2192,46 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 72px;
-    background-color: rgba(20, 20, 20, 0.97);
+    background-color: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.10);
     z-index: 900;
-    display: none; /* Masqué sur Desktop */
-    grid-template-columns: 1fr 1.4fr 1fr;
-    align-items: center;
-    border-top: 1px solid rgba(232, 217, 189, 0.12);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-}
-
-.mobile-sticky-item {
-    display: flex;
-    flex-direction: column;
+    display: none;
     align-items: center;
     justify-content: center;
-    gap: 4px;
-    color: rgba(250, 246, 237, 0.65);
-    font-size: 0.72rem;
-    font-weight: 500;
-    padding: 8px 4px;
-    min-height: 44px;
-    transition: color 0.2s ease;
+    padding: 10px 20px env(safe-area-inset-bottom, 10px);
+    border-top: 1px solid rgba(22, 105, 155, 0.10);
 }
 
-.mobile-sticky-item:active {
-    color: var(--color-sand);
-}
-
-.mobile-sticky-item svg {
-    width: 22px;
-    height: 22px;
-}
-
-/* ✨ Bouton Réserver — CTA central ultra mis en avant */
 .mobile-sticky-item.center-item {
-    position: relative;
-    background: linear-gradient(135deg, var(--color-gold) 0%, #e8b96a 50%, var(--color-terracotta) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 340px;
+    padding: 15px 24px;
+    background-color: var(--color-forest);
     color: #fff;
     font-weight: 700;
-    font-size: 0.8rem;
-    border-radius: 18px;
-    margin: -14px 8px 0 8px;
-    height: 62px;
-    box-shadow:
-        0 -4px 20px rgba(201, 164, 92, 0.45),
-        0 4px 16px rgba(201, 116, 92, 0.35),
-        0 0 0 2px rgba(201, 164, 92, 0.2);
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-size: 1rem;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(22, 105, 155, 0.35);
+    letter-spacing: 0.02em;
+    transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 .mobile-sticky-item.center-item:active {
-    transform: scale(0.96);
-    box-shadow: 0 2px 8px rgba(201, 164, 92, 0.3);
+    background-color: #10527a;
+    transform: scale(0.98);
     color: #fff;
 }
 
 .mobile-sticky-item.center-item svg {
-    color: rgba(255, 255, 255, 0.85);
     width: 20px;
     height: 20px;
-}
-
-/* Animation pulse subtile pour attirer l'attention */
-@keyframes reserveBtnPulse {
-    0%, 100% { box-shadow: 0 -4px 20px rgba(201, 164, 92, 0.45), 0 4px 16px rgba(201, 116, 92, 0.35), 0 0 0 2px rgba(201, 164, 92, 0.2); }
-    50% { box-shadow: 0 -4px 24px rgba(201, 164, 92, 0.65), 0 4px 20px rgba(201, 116, 92, 0.5), 0 0 0 4px rgba(201, 164, 92, 0.25); }
-}
-
-.mobile-sticky-item.center-item {
-    animation: reserveBtnPulse 2.8s ease-in-out infinite;
+    flex-shrink: 0;
 }
 
 /* 
@@ -2491,7 +2456,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
     /* === STICKY BAR === */
     .mobile-sticky-bar {
-        display: grid;
+        display: flex;
     }
 
     /* Back to top repositionné au dessus de la sticky bar */
@@ -2535,8 +2500,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     }
 
     .hero-description {
-        font-size: 0.9rem;
-        margin-bottom: 28px;
+        display: none;
     }
 
     /* CTAs hero : Réserver en pleine largeur, téléphone et itinéraire en 2 colonnes */
@@ -2551,14 +2515,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
         width: 100%;
         padding: 16px;
         font-size: 1rem;
-        border-radius: 14px;
-        background: linear-gradient(135deg, var(--color-gold), var(--color-terracotta));
-        border: none;
-        box-shadow: 0 6px 20px rgba(201, 164, 92, 0.4);
     }
 
     .hero-ctas .btn:not(:first-child) {
         flex: 1;
+        white-space: nowrap;
     }
 
     .hero-ctas {
@@ -2984,6 +2945,177 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     color: var(--color-forest);
     font-style: italic;
     margin-top: 20px;
+}
+
+/* ========================================================================
+   SECTION FAQ
+   ======================================================================== */
+
+.faq-list {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faq-item {
+    background: var(--color-white);
+    border: 1px solid rgba(22, 105, 155, 0.15);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    transition: box-shadow var(--transition-fast);
+}
+
+.faq-item:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.faq-item[open] {
+    box-shadow: var(--shadow-md);
+    border-color: rgba(22, 105, 155, 0.3);
+}
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-anthracite);
+    cursor: pointer;
+    list-style: none;
+    gap: 16px;
+    transition: color var(--transition-fast);
+}
+
+.faq-question::-webkit-details-marker {
+    display: none;
+}
+
+.faq-question::after {
+    content: '+';
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--color-forest);
+    flex-shrink: 0;
+    transition: transform var(--transition-fast);
+    line-height: 1;
+}
+
+.faq-item[open] .faq-question::after {
+    transform: rotate(45deg);
+}
+
+.faq-item[open] .faq-question {
+    color: var(--color-forest);
+}
+
+.faq-answer {
+    padding: 0 24px 20px;
+    border-top: 1px solid rgba(22, 105, 155, 0.08);
+}
+
+.faq-answer p {
+    font-size: 0.97rem;
+    line-height: 1.75;
+    color: #555;
+    margin-top: 16px;
+}
+
+.faq-answer a {
+    color: var(--color-forest);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+    .faq-question {
+        padding: 16px 18px;
+        font-size: 0.95rem;
+    }
+    .faq-answer {
+        padding: 0 18px 16px;
+    }
+}
+
+/* ========================================================
+   PAGE ACTUALITÉS
+   ======================================================== */
+
+.actualites-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.actualite-card {
+    background: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    border: 1px solid rgba(22,105,155,0.1);
+}
+
+.actualite-img {
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.actualite-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.actualite-body {
+    padding: 32px 36px;
+}
+
+.actualite-date {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-forest);
+    margin-bottom: 12px;
+}
+
+.actualite-titre {
+    font-family: var(--font-titles);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 8px;
+    line-height: 1.25;
+}
+
+.actualite-sous-titre {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.actualite-contenu {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--color-text);
+}
+
+@media (max-width: 640px) {
+    .actualite-body {
+        padding: 24px 20px;
+    }
+    .actualite-titre {
+        font-size: 1.4rem;
+    }
 }
 
 

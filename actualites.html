@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Analytics 4 — remplacer G-XXXXXXXXXX par votre Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- SEO Local -->
+    <title>Actualités — Les Tables de la Fontaine à Biscarrosse</title>
+    <meta name="description" content="Retrouvez toutes les actualités du restaurant Les Tables de la Fontaine à Biscarrosse : nouvelles formules, brunch dominical, événements et annonces.">
+    <link rel="canonical" href="https://lestablesdelafontaine-biscarrosse.fr/actualites.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Actualités — Les Tables de la Fontaine à Biscarrosse">
+    <meta property="og:description" content="Nouvelles formules, brunch dominical, événements et annonces du restaurant Les Tables de la Fontaine à Biscarrosse.">
+    <meta property="og:url" content="https://lestablesdelafontaine-biscarrosse.fr/actualites.html">
+    <meta property="og:image" content="https://lestablesdelafontaine-biscarrosse.fr/Images/devanture-resto.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Les Tables de la Fontaine, restaurant à Biscarrosse">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Les Tables de la Fontaine">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Actualités — Les Tables de la Fontaine Biscarrosse">
+    <meta name="twitter:description" content="Nouvelles formules, brunch dominical, événements et annonces.">
+    <meta name="twitter:image" content="https://lestablesdelafontaine-biscarrosse.fr/Images/devanture-resto.webp">
+    <meta name="twitter:image:alt" content="Les Tables de la Fontaine à Biscarrosse">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="Images/logo.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Données structurées JSON-LD — BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://lestablesdelafontaine-biscarrosse.fr/"},
+        {"@type": "ListItem", "position": 2, "name": "Actualités", "item": "https://lestablesdelafontaine-biscarrosse.fr/actualites.html"}
+      ]
+    }
+    </script>
+</head>
+<body>
+
+    <!-- Header / Sticky Navigation -->
+    <header class="main-header" id="header">
+        <div class="header-container container">
+            <a href="index.html" class="logo-group">
+                <img src="Images/logo.jpg" alt="Logo Les Tables de la Fontaine" class="header-logo">
+                <div class="logo-text">
+                    <span class="logo-title">Les Tables de la Fontaine</span>
+                    <span class="logo-subtitle">Restaurant & Bar à Cocktails</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="carte.html">La Carte</a></li>
+                    <li><a href="le-lieu.html">Le Lieu</a></li>
+                    <li><a href="actualites.html" class="nav-active">Actualités</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="reservation.html" class="nav-book-link">Réserver</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="tel:+33635345967" class="header-phone-btn" aria-label="Appeler le restaurant">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1A11.56 11.56 0 018.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/></svg>
+                    <span>06 35 34 59 67</span>
+                </a>
+                <a href="reservation.html" class="btn btn-secondary nav-action-btn">Réserver</a>
+            </div>
+
+            <button class="burger-btn" id="burgerBtn" aria-label="Ouvrir le menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <nav class="mobile-nav-menu">
+        <ul>
+            <li><a href="index.html" class="mobile-nav-link">Accueil</a></li>
+            <li><a href="carte.html" class="mobile-nav-link">La Carte</a></li>
+            <li><a href="le-lieu.html" class="mobile-nav-link">Le Lieu</a></li>
+            <li><a href="actualites.html" class="mobile-nav-link">Actualités</a></li>
+            <li><a href="contact.html" class="mobile-nav-link">Contact & Accès</a></li>
+            <li><a href="reservation.html" class="mobile-nav-link btn btn-primary">Réserver une table</a></li>
+        </ul>
+        <div class="mobile-nav-footer">
+            <a href="tel:+33635345967" class="mobile-contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1A11.56 11.56 0 018.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/></svg>
+                06 35 34 59 67
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header Banner -->
+    <section class="page-header-section">
+        <div class="container">
+            <h1>Actualités du restaurant à Biscarrosse</h1>
+            <p>Nouveautés, brunchs, annonces et moments de vie des Tables de la Fontaine</p>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <main class="container" style="padding-top: 60px; padding-bottom: 80px;">
+
+        <!-- État de chargement -->
+        <div id="actualitesLoading" style="text-align:center; padding: 60px 0; color: var(--color-text-muted);">
+            <p>Chargement des actualités…</p>
+        </div>
+
+        <!-- État vide -->
+        <div id="actualitesEmpty" class="hidden" style="text-align:center; padding: 80px 20px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="1.5" style="margin-bottom:16px;"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            <h2 style="font-family:var(--font-titles); font-size:1.5rem; margin-bottom:8px;">Aucune actualité pour le moment</h2>
+            <p style="color:var(--color-text-muted);">Revenez bientôt pour découvrir nos nouveautés.</p>
+        </div>
+
+        <!-- Grille des actualités -->
+        <div id="actualitesGrid" class="actualites-grid hidden"></div>
+
+        <!-- CTA bas de page -->
+        <div style="text-align:center; margin-top:60px; padding-top:40px; border-top:1px solid rgba(22,105,155,0.12);">
+            <p style="font-family:var(--font-titles); font-size:1.4rem; margin-bottom:20px;">Une envie de nous rejoindre ?</p>
+            <a href="reservation.html" class="btn btn-primary">Réserver une table</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <div class="footer-logo-group">
+                    <img src="Images/logo.jpg" alt="Logo Les Tables de la Fontaine" class="footer-logo-img">
+                    <span class="footer-logo">Les Tables de la Fontaine</span>
+                </div>
+                <p class="footer-desc">Restaurant de cuisine française conviviale et bar à cocktails niché dans un cadre calme, boisé et naturel à Biscarrosse.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/lestablesdelafontaine40" target="_blank" rel="noopener noreferrer" aria-label="Suivre sur Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="feather"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="https://share.google/PISvZEtCB66CvocP8" target="_blank" rel="noopener noreferrer" aria-label="Nous trouver sur Google Maps">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"></circle><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col links-col">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="carte.html">La Carte</a></li>
+                    <li><a href="le-lieu.html">Le Lieu</a></li>
+                    <li><a href="actualites.html">Actualités</a></li>
+                    <li><a href="contact.html">Contact & Accès</a></li>
+                    <li><a href="reservation.html">Réservation</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col hours-col">
+                <h3>Horaires de service</h3>
+                <p><strong>Midi :</strong> 10h00 – 14h00</p>
+                <p><strong>Soir :</strong> 17h30 – 22h00</p>
+                <p class="hours-note">Service continu sur les boissons fraîches durant les beaux jours d'été. Pensez à appeler en cas de doute.</p>
+            </div>
+
+            <div class="footer-col info-col">
+                <h3>Contact & Accès</h3>
+                <p>540 chemin de Bimbo<br>40600 Biscarrosse</p>
+                <p><a href="tel:+33635345967" class="footer-phone-link">06 35 34 59 67</a></p>
+                <p>Instagram : <a href="https://www.instagram.com/lestablesdelafontaine40" target="_blank" rel="noopener noreferrer">@lestablesdelafontaine40</a></p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p>&copy; 2026 Les Tables de la Fontaine. Tous droits réservés.</p>
+                <div class="footer-legal-links">
+                    <a href="mentions-legales.html" class="btn-text">Mentions Légales</a>
+                    <span class="separator">|</span>
+                    <a href="politique-confidentialite.html" class="btn-text">Politique de Confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Barre Fixe Mobile -->
+    <div class="mobile-sticky-bar">
+        <a href="reservation.html" class="mobile-sticky-item center-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>Réserver une table</span>
+        </a>
+    </div>
+
+    <button class="back-to-top" id="backToTopBtn" aria-label="Retour en haut de page">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

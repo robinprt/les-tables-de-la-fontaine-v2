@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Analytics 4 — remplacer G-XXXXXXXXXX par votre Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
     
     <!-- SEO Local -->
     <title>La Carte - Cuisine & Cocktails | Les Tables de la Fontaine à Biscarrosse</title>
@@ -14,11 +23,22 @@
     <meta property="og:title" content="La Carte - Cuisine & Cocktails | Les Tables de la Fontaine">
     <meta property="og:description" content="Suggestions fraîches, plats traditionnels généreux et créations cocktails maison. Réservez votre table sous les pins.">
     <meta property="og:url" content="https://lestablesdelafontaine-biscarrosse.fr/carte.html">
-    <meta property="og:image" content="Images/plat.webp">
+    <meta property="og:image" content="https://lestablesdelafontaine-biscarrosse.fr/Images/plat.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Plat cuisiné du restaurant Les Tables de la Fontaine à Biscarrosse">
     <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Les Tables de la Fontaine">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="La Carte — Cuisine & Cocktails | Les Tables de la Fontaine Biscarrosse">
+    <meta name="twitter:description" content="Menu complet : entrées, poissons, viandes, desserts et cocktails. Brunch dominical 24€. Restaurant à Biscarrosse.">
+    <meta name="twitter:image" content="https://lestablesdelafontaine-biscarrosse.fr/Images/plat.webp">
+    <meta name="twitter:image:alt" content="Plat cuisiné du restaurant Les Tables de la Fontaine">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="Images/logo.jpg">
+    <link rel="icon" type="image/jpeg" href="Images/logo.jpg">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +47,99 @@
     
     <!-- Styles CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Données structurées JSON-LD — BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://lestablesdelafontaine-biscarrosse.fr/"},
+        {"@type": "ListItem", "position": 2, "name": "La Carte", "item": "https://lestablesdelafontaine-biscarrosse.fr/carte.html"}
+      ]
+    }
+    </script>
+
+    <!-- Données structurées JSON-LD — Menu -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Menu",
+      "name": "Carte du restaurant Les Tables de la Fontaine",
+      "url": "https://lestablesdelafontaine-biscarrosse.fr/carte.html",
+      "description": "Menu complet du restaurant Les Tables de la Fontaine à Biscarrosse : cuisine française, cocktails, mocktails et brunch dominical.",
+      "inLanguage": "fr",
+      "hasMenuSection": [
+        {
+          "@type": "MenuSection",
+          "name": "À Partager",
+          "hasMenuItem": [
+            {"@type": "MenuItem", "name": "Les 6 huîtres du Bassin d'Arcachon", "description": "Huîtres fraîches en provenance directe du Bassin d'Arcachon.", "offers": {"@type": "Offer", "price": "11.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Planche de charcuterie", "description": "Sélection de charcuteries fines à partager.", "offers": {"@type": "Offer", "price": "15.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Planche mixte charcuterie et fromages", "description": "Charcuteries fines et fromages affinés à partager.", "offers": {"@type": "Offer", "price": "17.00", "priceCurrency": "EUR"}}
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Les Entrées",
+          "hasMenuItem": [
+            {"@type": "MenuItem", "name": "Carpaccio de bœuf et petits légumes", "description": "Fines tranches de bœuf assaisonnées, accompagnées de petits légumes croquants.", "offers": {"@type": "Offer", "price": "13.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Os à moelle rôtis", "description": "Os à moelle rôtis au four, servis avec condiments et toasts grillés.", "offers": {"@type": "Offer", "price": "12.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Burrata et velouté de tomates fraîches", "description": "Burrata crémeuse sur lit de velouté de tomates fraîches de saison.", "offers": {"@type": "Offer", "price": "14.50", "priceCurrency": "EUR"}}
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Les Poissons",
+          "hasMenuItem": [
+            {"@type": "MenuItem", "name": "Calamars au chorizo", "description": "Calamars snackés à la plancha avec dés de chorizo grillés.", "offers": {"@type": "Offer", "price": "19.50", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Pavé de thon", "description": "Pavé de thon cuit à cœur ou mi-cuit selon votre convenance.", "offers": {"@type": "Offer", "price": "22.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Dos de daurade royale", "description": "Dos de daurade royale cuit sur peau, jus d'herbes fines.", "offers": {"@type": "Offer", "price": "22.00", "priceCurrency": "EUR"}}
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Les Viandes",
+          "hasMenuItem": [
+            {"@type": "MenuItem", "name": "Pavé de Rumsteak", "description": "Rumsteak tendre et juteux, grillé selon votre goût. Viande d'origine française.", "offers": {"@type": "Offer", "price": "25.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Côte de veau crème champignons", "description": "Côte de veau poêlée, sauce onctueuse aux champignons.", "offers": {"@type": "Offer", "price": "26.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Burger classique", "description": "Steak haché de bœuf frais, fromage fondu, oignons caramélisés et frites maison.", "offers": {"@type": "Offer", "price": "15.50", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Cœurs de canard en persillade", "description": "Cœurs de canard sautés à la poêle avec ail frais et persil.", "offers": {"@type": "Offer", "price": "19.50", "priceCurrency": "EUR"}}
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Les Desserts",
+          "hasMenuItem": [
+            {"@type": "MenuItem", "name": "Brioche perdue gourmande", "description": "Brioche épaisse caramélisée, boule de glace vanille et caramel au beurre salé.", "offers": {"@type": "Offer", "price": "7.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Nougat glacé coulis de fruits rouges", "description": "Nougat glacé maison aux éclats d'amandes et pistaches.", "offers": {"@type": "Offer", "price": "7.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Crème brûlée au citron vert", "description": "Crème brûlée onctueuse parfumée au citron vert frais.", "offers": {"@type": "Offer", "price": "7.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Fondant au chocolat", "description": "Cœur coulant au chocolat noir, crème anglaise.", "offers": {"@type": "Offer", "price": "7.00", "priceCurrency": "EUR"}}
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Les Cocktails",
+          "hasMenuItem": [
+            {"@type": "MenuItem", "name": "Mojito", "description": "Rhum, menthe fraîche, citron vert, sucre de canne, eau gazeuse.", "offers": {"@type": "Offer", "price": "9.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Spritz", "description": "Apérol, Prosecco, eau gazeuse, tranche d'orange.", "offers": {"@type": "Offer", "price": "9.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Caipirinha", "description": "Cachaça, citron vert frais pilé, sucre.", "offers": {"@type": "Offer", "price": "9.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Expresso Martini", "description": "Vodka, liqueur de café Kahlúa, café expresso fraîchement serré.", "offers": {"@type": "Offer", "price": "9.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Piña Colada", "description": "Rhum, jus d'ananas, crème de noix de coco.", "offers": {"@type": "Offer", "price": "9.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Virgin Mojito", "description": "Menthe fraîche, citron vert pilé, sucre de canne, Ginger Ale. Sans alcool.", "offers": {"@type": "Offer", "price": "8.00", "priceCurrency": "EUR"}}
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Menu Enfant",
+          "description": "Pour les moins de 12 ans",
+          "hasMenuItem": [
+            {"@type": "MenuItem", "name": "Menu Enfant", "description": "Sirop au choix + plat au choix (tenders poulet ou cordon bleu) avec frites maison + 2 boules de glace.", "offers": {"@type": "Offer", "price": "12.00", "priceCurrency": "EUR"}}
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 
@@ -46,6 +159,7 @@
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="carte.html">La Carte</a></li>
                     <li><a href="le-lieu.html">Le Lieu</a></li>
+                    <li><a href="actualites.html">Actualités</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="reservation.html" class="nav-book-link">Réserver</a></li>
                 </ul>
@@ -74,6 +188,7 @@
                 <li><a href="index.html" class="mobile-nav-link">Accueil</a></li>
                 <li><a href="carte.html" class="mobile-nav-link">La Carte</a></li>
                 <li><a href="le-lieu.html" class="mobile-nav-link">Le Lieu</a></li>
+                <li><a href="actualites.html" class="mobile-nav-link">Actualités</a></li>
                 <li><a href="contact.html" class="mobile-nav-link">Contact & Accès</a></li>
                 <li><a href="reservation.html" class="mobile-nav-link btn btn-primary">Réserver une table</a></li>
             </ul>
@@ -90,8 +205,8 @@
     <!-- Header Banner -->
     <section class="page-header-section">
         <div class="container">
-            <h1>Notre Carte</h1>
-            <p>Une cuisine française conviviale et des cocktails d'été à savourer en terrasse</p>
+            <h1>Carte du restaurant à Biscarrosse — Cuisine française & Cocktails</h1>
+            <p>Plats faits maison, suggestions de saison et cocktails de création à savourer en terrasse sous les pins</p>
         </div>
     </section>
 
@@ -105,7 +220,7 @@
                         <div class="cuisine-grid">
                             <img src="Images/plat.webp" alt="Plat fait maison" loading="lazy" class="rounded-img">
                             <img src="Images/carpaccio.webp" alt="Carpaccio de boeuf" loading="lazy" class="rounded-img">
-                            <img src="Images/plats 5.webp" alt="Planche garnie" loading="lazy" class="rounded-img">
+                            <img src="Images/plats-5.webp" alt="Planche garnie" loading="lazy" class="rounded-img">
                         </div>
                     </div>
                     
@@ -315,7 +430,7 @@
         </section>
 
         <!-- Cocktails Section -->
-        <section id="cocktails" class="cocktails-section section-padding alternate-bg" style="background-image: linear-gradient(rgba(240, 230, 215, 0.95), rgba(250, 246, 237, 0.98)), url('Images/tireuse a biere terasse.webp');">
+        <section id="cocktails" class="cocktails-section section-padding alternate-bg" style="background-image: linear-gradient(rgba(240, 230, 215, 0.95), rgba(250, 246, 237, 0.98)), url('Images/tireuse-biere-terrasse.webp');">
             <div class="container">
                 <div class="cocktails-container">
                     <div class="cocktails-text">
@@ -580,6 +695,7 @@
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="carte.html">La Carte</a></li>
                     <li><a href="le-lieu.html">Le Lieu</a></li>
+                    <li><a href="actualites.html">Actualités</a></li>
                     <li><a href="contact.html">Contact & Accès</a></li>
                     <li><a href="reservation.html">Réservation</a></li>
                 </ul>
@@ -616,17 +732,9 @@
 
     <!-- Barre Fixe Mobile Tactile -->
     <div class="mobile-sticky-bar">
-        <a href="tel:+33635345967" class="mobile-sticky-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1A11.56 11.56 0 018.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/></svg>
-            <span>Appeler</span>
-        </a>
         <a href="reservation.html" class="mobile-sticky-item center-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            <span>Réserver</span>
-        </a>
-        <a href="contact.html" class="mobile-sticky-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"></circle><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"></path></svg>
-            <span>Itinéraire</span>
+            <span>Réserver une table</span>
         </a>
     </div>
 

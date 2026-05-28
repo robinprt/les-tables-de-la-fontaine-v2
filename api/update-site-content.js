@@ -251,6 +251,39 @@ module.exports = async (req, res) => {
         return res.status(200).json({ success: true, message: "Lien enregistré avec succès." });
       }
 
+      // ----------------------------------------------------
+      // ACTION: Gestion des actualités
+      // ----------------------------------------------------
+      case 'manage_actualites': {
+        if (subaction === 'delete') {
+          if (!data || !data.id) {
+            return res.status(400).json({ error: "ID de l'actualité manquant." });
+          }
+          const { error } = await supabase.from('actualites').delete().eq('id', data.id);
+          if (error) throw error;
+          return res.status(200).json({ success: true, message: "Actualité supprimée." });
+        }
+
+        if (!data || !data.titre || !data.contenu) {
+          return res.status(400).json({ error: "Champs obligatoires manquants (titre, contenu)." });
+        }
+
+        const row = {
+          titre: data.titre.trim(),
+          sous_titre: data.sous_titre ? data.sous_titre.trim() : null,
+          contenu: data.contenu.trim(),
+          photo_url: data.photo_url ? data.photo_url.trim() : null,
+          publie: data.publie !== false,
+          updated_at: new Date().toISOString()
+        };
+        if (data.id) row.id = data.id;
+
+        const { error } = await supabase.from('actualites').upsert(row);
+        if (error) throw error;
+
+        return res.status(200).json({ success: true, message: "Actualité enregistrée." });
+      }
+
       default:
         return res.status(400).json({ error: `Action '${action}' non reconnue.` });
     }

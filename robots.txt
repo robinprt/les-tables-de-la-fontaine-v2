@@ -2,4 +2,23 @@ User-agent: *
 Disallow: /admin/
 Allow: /
 
+# AI search crawlers — autoriser la citation par les moteurs génératifs
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
 Sitemap: https://lestablesdelafontaine-biscarrosse.fr/sitemap.xml

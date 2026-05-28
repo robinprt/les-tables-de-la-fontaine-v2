@@ -236,6 +236,8 @@ function switchTab(tabId) {
     renderGalleryManagement();
   } else if (tabId === 'reviews') {
     renderReviewsManagement();
+  } else if (tabId === 'actualites') {
+    renderActualitesManagement();
   } else if (tabId === 'links') {
     renderLinksManagement();
   } else if (tabId === 'content') {
@@ -275,6 +277,12 @@ function initFormsAndModals() {
     manualBookingForm.addEventListener('submit', createManualBooking);
   }
   
+  // Actualités
+  const actualiteForm = document.getElementById('actualiteForm');
+  if (actualiteForm) actualiteForm.addEventListener('submit', saveActualite);
+  const addActualiteBtn = document.getElementById('addActualiteBtn');
+  if (addActualiteBtn) addActualiteBtn.addEventListener('click', () => openActualiteModal());
+
   // Boutons d'ajout rapide ou classique
   const addBtn = document.getElementById('addManualBookingBtn');
   const quickAddBtn = document.getElementById('quickAddBookingBtn');
@@ -1653,6 +1661,115 @@ async function saveSiteTexts(e) {
     alert("Erreur d'enregistrement : " + error.message);
   }
 }
+
+/**
+ * ============================================================================
+ * ACTUALITÉS
+ * ============================================================================
+ */
+
+function renderActualitesManagement() {
+  const grid = document.getElementById('adminActualitesList');
+  grid.innerHTML = '';
+
+  const list = siteData.actualites || [];
+
+  if (list.length === 0) {
+    grid.innerHTML = `<p class="text-muted text-center py-4" style="grid-column:1/-1;">Aucune actualité publiée. Cliquez sur "Nouvelle actualité" pour commencer.</p>`;
+    return;
+  }
+
+  list.forEach(actu => {
+    const card = document.createElement('div');
+    card.className = 'review-admin-card';
+    card.innerHTML = `
+      <div class="review-admin-header">
+        <strong>${actu.titre}</strong>
+        <span style="font-size:12px;color:var(--color-text-muted);">${actu.publie ? '✅ Publié' : '⏸ Brouillon'}</span>
+      </div>
+      ${actu.sous_titre ? `<div style="font-size:13px;color:var(--color-text-muted);margin-bottom:6px;">${actu.sous_titre}</div>` : ''}
+      <div class="review-admin-body" style="max-height:80px;overflow:hidden;">${actu.contenu}</div>
+      <div class="review-admin-footer">
+        <span style="font-size:12px;">${new Date(actu.created_at).toLocaleDateString('fr-FR')}</span>
+        <div class="gallery-card-actions">
+          <button class="btn btn-icon" style="padding:4px;height:30px;width:30px;" title="Modifier" onclick="openActualiteModal('${actu.id}')">✏️</button>
+          <button class="btn btn-icon" style="color:var(--color-danger);padding:4px;height:30px;width:30px;" title="Supprimer" onclick="deleteActualite('${actu.id}')">🗑️</button>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+window.openActualiteModal = function(id = null) {
+  const form = document.getElementById('actualiteForm');
+  form.reset();
+
+  if (id) {
+    const actu = (siteData.actualites || []).find(x => x.id === id);
+    if (!actu) return;
+    document.getElementById('actualiteModalTitle').textContent = "Modifier l'actualité";
+    document.getElementById('actId').value = actu.id;
+    document.getElementById('actTitre').value = actu.titre;
+    document.getElementById('actSousTitre').value = actu.sous_titre || '';
+    document.getElementById('actContenu').value = actu.contenu;
+    document.getElementById('actPhotoUrl').value = actu.photo_url || '';
+    document.getElementById('actPublie').checked = actu.publie;
+  } else {
+    document.getElementById('actualiteModalTitle').textContent = "Nouvelle actualité";
+    document.getElementById('actId').value = '';
+  }
+
+  document.getElementById('actualiteModal').showModal();
+};
+
+async function saveActualite(e) {
+  e.preventDefault();
+  const btn = document.getElementById('actualiteSubmitBtn');
+  setButtonLoading(btn, true);
+
+  const id = document.getElementById('actId').value;
+  const titre = document.getElementById('actTitre').value.trim();
+  const sous_titre = document.getElementById('actSousTitre').value.trim();
+  const contenu = document.getElementById('actContenu').value.trim();
+  const photo_url = document.getElementById('actPhotoUrl').value.trim();
+  const publie = document.getElementById('actPublie').checked;
+
+  try {
+    const res = await apiFetch('/api/update-site-content', 'POST', {
+      action: 'manage_actualites',
+      data: { id: id || undefined, titre, sous_titre: sous_titre || null, contenu, photo_url: photo_url || null, publie }
+    });
+
+    if (res.success) {
+      document.getElementById('actualiteModal').close();
+      await refreshPublicCache();
+      renderActualitesManagement();
+    }
+  } catch (error) {
+    alert("Erreur : " + error.message);
+  } finally {
+    setButtonLoading(btn, false);
+  }
+}
+
+window.deleteActualite = async function(id) {
+  if (confirm("Supprimer cette actualité du site public ?")) {
+    try {
+      const res = await apiFetch('/api/update-site-content', 'POST', {
+        action: 'manage_actualites',
+        subaction: 'delete',
+        data: { id }
+      });
+      if (res.success) {
+        await refreshPublicCache();
+        renderActualitesManagement();
+      }
+    } catch (error) {
+      alert("Erreur : " + error.message);
+    }
+  }
+};
 
 /**
  * Rafraîchit les données du cache public (heures, carte, etc.)

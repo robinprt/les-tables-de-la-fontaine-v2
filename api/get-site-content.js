@@ -24,7 +24,8 @@ module.exports = async (req, res) => {
       itemsRes,
       galleryRes,
       reviewsRes,
-      linksRes
+      linksRes,
+      actualitesRes
     ] = await Promise.all([
       supabase.from('site_settings').select('*'),
       supabase.from('opening_hours').select('*').order('display_order', { ascending: true }),
@@ -32,7 +33,8 @@ module.exports = async (req, res) => {
       supabase.from('menu_items').select('*').eq('is_visible', true).order('display_order', { ascending: true }),
       supabase.from('gallery_images').select('*').eq('is_visible', true).order('display_order', { ascending: true }),
       supabase.from('reviews').select('*').eq('is_visible', true).order('display_order', { ascending: true }),
-      supabase.from('external_links').select('*').eq('is_visible', true).order('display_order', { ascending: true })
+      supabase.from('external_links').select('*').eq('is_visible', true).order('display_order', { ascending: true }),
+      supabase.from('actualites').select('*').eq('publie', true).order('created_at', { ascending: false })
     ]);
 
     if (settingsRes.error) throw settingsRes.error;
@@ -42,6 +44,7 @@ module.exports = async (req, res) => {
     if (galleryRes.error) throw galleryRes.error;
     if (reviewsRes.error) throw reviewsRes.error;
     if (linksRes.error) throw linksRes.error;
+    if (actualitesRes.error) throw actualitesRes.error;
 
     // Convertir les paramètres sous forme de clé: valeur
     const settings = {};
@@ -58,6 +61,7 @@ module.exports = async (req, res) => {
       gallery_images: galleryRes.data,
       reviews: reviewsRes.data,
       external_links: linksRes.data,
+      actualites: actualitesRes.data,
       supabase_url: process.env.SUPABASE_URL || "",
       supabase_anon_key: process.env.SUPABASE_ANON_KEY || ""
     });
