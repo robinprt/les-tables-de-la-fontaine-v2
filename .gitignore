@@ -1,0 +1,45 @@
+# =============================================================
+# LES TABLES DE LA FONTAINE — .gitignore
+# =============================================================
+
+# --- Dépendances ---
+node_modules/
+.pnp/
+.pnp.js
+
+# --- Variables d'environnement (SECRETS — ne jamais committer) ---
+.env
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
+
+# --- Vercel ---
+.vercel/
+.output/
+
+# --- Système macOS ---
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# --- Éditeurs ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Logs ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Divers ---
+Thumbs.db

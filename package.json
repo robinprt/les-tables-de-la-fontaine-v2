@@ -1,0 +1,14 @@
+{
+  "name": "les-tables-de-la-fontaine-backend",
+  "version": "1.0.0",
+  "description": "Backend API and Admin Dashboard for Les Tables de la Fontaine",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.8",
+    "resend": "^3.2.0",
+    "@sendgrid/mail": "^8.1.1"
+  }
+}

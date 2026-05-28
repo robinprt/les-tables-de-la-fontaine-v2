@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Administration | Les Tables de la Fontaine</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Layout & Design -->
+    <link rel="stylesheet" href="admin.css">
+    
+    <!-- Supabase JS Client CDN Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <!-- 1. ECRAN DE CONNEXION -->
+    <div id="loginContainer" class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <img src="../Images/logo.jpg" alt="Logo" class="login-logo">
+                <h2>Les Tables de la Fontaine</h2>
+                <p>Espace d'administration privé</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="loginEmail">Adresse e-mail</label>
+                    <input type="email" id="loginEmail" required placeholder="admin@exemple.com">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Mot de passe</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                </div>
+                <div id="loginFeedback" class="feedback-message error hidden"></div>
+                <button type="submit" id="loginSubmitBtn" class="btn btn-primary btn-full">
+                    <span class="btn-text">Se connecter</span>
+                    <span class="loader hidden"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. WRAPPER DASHBOARD PRINCIPAL -->
+    <div id="dashboardWrapper" class="dashboard-wrapper hidden">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../Images/logo.jpg" alt="Logo" class="sidebar-logo">
+                <div class="sidebar-branding">
+                    <h3>La Fontaine</h3>
+                    <span>Administration</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <button class="nav-tab-btn active" data-tab="overview">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                            Vue d'ensemble
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-tab-btn" data-tab="reservations">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            Réservations
+                            <span id="pendingBadge" class="badge badge-warning hidden">0</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-tab-btn" data-tab="calendar">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            Calendrier
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-tab-btn" data-tab="hours">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            Horaires
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-tab-btn" data-tab="menu">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                            La Carte
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-tab-btn" data-tab="gallery">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                            Galerie Photos
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-tab-btn" data-tab="reviews">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                            Avis Clients
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-tab-btn" data-tab="links">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                            Liens Externes
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-tab-btn" data-tab="content">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                            Textes du Site
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <span id="userEmailSpan">admin@lestables.fr</span>
+                </div>
+                <button id="logoutBtn" class="logout-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                    Déconnexion
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- VUE ONDULET: VUE D'ENSEMBLE -->
+            <section id="tab-overview" class="tab-content active">
+                <div class="content-header">
+                    <h1>Vue d'ensemble</h1>
+                    <p>Tableau de bord et raccourcis rapides</p>
+                </div>
+                
+                <!-- Statistiques -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon warning">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        </div>
+                        <div class="stat-data">
+                            <span class="stat-value" id="stat-pending">0</span>
+                            <span class="stat-label">En attente</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon info">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        </div>
+                        <div class="stat-data">
+                            <span class="stat-value" id="stat-today-bookings">0</span>
+                            <span class="stat-label">Réservations aujourd'hui</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon success">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                        </div>
+                        <div class="stat-data">
+                            <span class="stat-value" id="stat-today-covers">0</span>
+                            <span class="stat-label">Couverts aujourd'hui</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon primary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                        </div>
+                        <div class="stat-data">
+                            <span class="stat-value" id="stat-week-covers">0</span>
+                            <span class="stat-label">Couverts cette semaine</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Raccourcis Rapides -->
+                <div class="overview-grid">
+                    <div class="panel-card">
+                        <h3>Actions rapides</h3>
+                        <div class="quick-actions">
+                            <button id="quickAddBookingBtn" class="btn btn-secondary">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                Ajouter une réservation
+                            </button>
+                            <button class="btn btn-outline-primary" data-action-tab="hours">
+                                Modifier les horaires
+                            </button>
+                            <button class="btn btn-outline-primary" data-action-tab="menu">
+                                Ajouter un plat
+                            </button>
+                            <button class="btn btn-outline-primary" data-action-tab="gallery">
+                                Mettre en ligne une photo
+                            </button>
+                            <a href="../" target="_blank" class="btn btn-outline-dark">
+                                Voir le site public
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="panel-card">
+                        <h3>Demandes en attente récentes</h3>
+                        <div class="table-wrapper-mini">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Nom</th>
+                                        <th>Couverts</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="overviewPendingList">
+                                    <tr>
+                                        <td colspan="4" class="text-center text-muted">Aucune demande en attente.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VUE ONDULET: RESERVATIONS -->
+            <section id="tab-reservations" class="tab-content">
+                <div class="content-header flex-header">
+                    <div>
+                        <h1>Gestion des Réservations</h1>
+                        <p>Visualisez, filtrez et modifiez toutes les demandes de table</p>
+                    </div>
+                    <div class="header-actions-row">
+                        <button id="exportCsvBtn" class="btn btn-outline-dark">Exporter en CSV</button>
+                        <button id="addManualBookingBtn" class="btn btn-primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            Saisir manuellement
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Filtres -->
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <label for="filterDate">Date</label>
+                        <input type="date" id="filterDate">
+                    </div>
+                    <div class="filter-group">
+                        <label for="filterStatus">Statut</label>
+                        <select id="filterStatus">
+                            <option value="">Tous les statuts</option>
+                            <option value="pending">En attente (Orange)</option>
+                            <option value="confirmed">Confirmée (Vert)</option>
+                            <option value="refused">Refusée (Rouge)</option>
+                            <option value="cancelled">Annulée (Gris)</option>
+                            <option value="completed">Terminée</option>
+                            <option value="no_show">No-Show</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filterType">Type</label>
+                        <select id="filterType">
+                            <option value="">Tous les types</option>
+                            <option value="dejeuner">Déjeuner</option>
+                            <option value="diner">Dîner</option>
+                            <option value="cocktails">Cocktails</option>
+                            <option value="groupe">Groupe</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+                    <div class="filter-group flex-grow">
+                        <label for="searchBooking">Rechercher</label>
+                        <input type="text" id="searchBooking" placeholder="Nom, e-mail, téléphone...">
+                    </div>
+                    <div class="filter-group-actions">
+                        <button id="clearFiltersBtn" class="btn btn-outline-dark">Réinitialiser</button>
+                    </div>
+                </div>
+
+                <!-- Tableau principal -->
+                <div class="panel-card no-padding">
+                    <div class="table-wrapper">
+                        <table class="data-table" id="bookingsTable">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Heure</th>
+                                    <th>Client</th>
+                                    <th>Téléphone</th>
+                                    <th>Couverts</th>
+                                    <th>Type</th>
+                                    <th>Statut</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bookingsList">
+                                <tr>
+                                    <td colspan="8" class="text-center text-muted py-4">Chargement des données...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VUE ONDULET: CALENDRIER -->
+            <section id="tab-calendar" class="tab-content">
+                <div class="content-header flex-header">
+                    <div>
+                        <h1>Calendrier</h1>
+                        <p>Visualisation des couverts par jour et par service</p>
+                    </div>
+                    <div class="calendar-controls">
+                        <button id="calPrevMonth" class="btn btn-icon">&lt;</button>
+                        <h2 id="calendarTitle">Mai 2026</h2>
+                        <button id="calNextMonth" class="btn btn-icon">&gt;</button>
+                    </div>
+                </div>
+
+                <div class="calendar-layout">
+                    <!-- Grille Calendrier Mois -->
+                    <div class="panel-card no-padding calendar-card">
+                        <div class="calendar-grid-header">
+                            <div>Lun</div><div>Mar</div><div>Mer</div><div>Jeu</div><div>Ven</div><div>Sam</div><div>Dim</div>
+                        </div>
+                        <div class="calendar-grid" id="calendarGrid">
+                            <!-- Rempli par Javascript -->
+                        </div>
+                    </div>
+
+                    <!-- Détail Jour Sélectionné -->
+                    <div class="calendar-details-panel">
+                        <div class="panel-card">
+                            <h3 id="selectedDateTitle">Sélectionnez un jour</h3>
+                            <div class="selected-day-covers-summary">
+                                <span class="badge badge-success" id="dayTotalCovers">0 couverts</span>
+                            </div>
+                            
+                            <div class="timeline-container" id="dayTimeline">
+                                <p class="text-muted text-center py-4">Cliquez sur un jour du calendrier pour voir le détail des réservations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VUE ONDULET: HORAIRES -->
+            <section id="tab-hours" class="tab-content">
+                <div class="content-header">
+                    <h1>Gestion des Horaires</h1>
+                    <p>Modifiez les horaires d'ouverture affichés en pied de page et sur la page contact</p>
+                </div>
+                
+                <div class="panel-card">
+                    <form id="hoursForm">
+                        <div class="table-wrapper">
+                            <table class="data-table no-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Jour</th>
+                                        <th>Fermé</th>
+                                        <th>Ouverture Midi</th>
+                                        <th>Fermeture Midi</th>
+                                        <th>Ouverture Soir</th>
+                                        <th>Fermeture Soir</th>
+                                        <th>Note Spéciale / Événement</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="hoursTableBody">
+                                    <!-- Rempli dynamiquement -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-actions-bar">
+                            <button type="submit" class="btn btn-primary">
+                                Enregistrer les modifications
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- VUE ONDULET: CARTE -->
+            <section id="tab-menu" class="tab-content">
+                <div class="content-header flex-header">
+                    <div>
+                        <h1>Gestion de la Carte</h1>
+                        <p>Gérez les plats, boissons, prix et catégories du restaurant</p>
+                    </div>
+                    <div class="header-actions-row">
+                        <button id="addCategoryBtn" class="btn btn-outline-primary">Ajouter une catégorie</button>
+                        <button id="addDishBtn" class="btn btn-primary">Ajouter un plat / boisson</button>
+                    </div>
+                </div>
+
+                <div class="menu-tabs-row">
+                    <button class="sub-tab-btn active" data-menu-section="food">Cuisine & Plats</button>
+                    <button class="sub-tab-btn" data-menu-section="drinks">Bar & Boissons</button>
+                </div>
+
+                <div class="menu-management-layout" id="menuLayout">
+                    <!-- Rempli dynamiquement par catégorie -->
+                </div>
+            </section>
+
+            <!-- VUE ONDULET: GALERIE -->
+            <section id="tab-gallery" class="tab-content">
+                <div class="content-header flex-header">
+                    <div>
+                        <h1>Galerie Photos</h1>
+                        <p>Gérez les images d'illustration du restaurant stockées dans Supabase Storage</p>
+                    </div>
+                    <button id="uploadImageBtn" class="btn btn-primary">Mettre en ligne une photo</button>
+                </div>
+
+                <div class="gallery-filters">
+                    <button class="gallery-filter-btn active" data-category="">Toutes</button>
+                    <button class="gallery-filter-btn" data-category="terrasse">Terrasse</button>
+                    <button class="gallery-filter-btn" data-category="plats">Plats</button>
+                    <button class="gallery-filter-btn" data-category="cocktails">Cocktails</button>
+                    <button class="gallery-filter-btn" data-category="salle">Salle</button>
+                    <button class="gallery-filter-btn" data-category="bar">Bar</button>
+                    <button class="gallery-filter-btn" data-category="ambiance">Ambiance</button>
+                </div>
+
+                <div class="admin-gallery-grid" id="adminGalleryGrid">
+                    <!-- Rempli dynamiquement -->
+                </div>
+            </section>
+
+            <!-- VUE ONDULET: AVIS -->
+            <section id="tab-reviews" class="tab-content">
+                <div class="content-header flex-header">
+                    <div>
+                        <h1>Avis Clients</h1>
+                        <p>Gérez les avis affichés dans le carrousel de la page d'accueil</p>
+                    </div>
+                    <button id="addReviewBtn" class="btn btn-primary">Ajouter un avis client</button>
+                </div>
+
+                <div class="booking-notice" style="margin-bottom: 24px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    <p><strong>Avertissement :</strong> Veuillez ajouter uniquement des avis réels provenant de Google Business ou d'autres plateformes publiques.</p>
+                </div>
+
+                <div class="reviews-list-grid" id="adminReviewsGrid">
+                    <!-- Rempli dynamiquement -->
+                </div>
+            </section>
+
+            <!-- VUE ONDULET: LIENS EXTERNES -->
+            <section id="tab-links" class="tab-content">
+                <div class="content-header flex-header">
+                    <div>
+                        <h1>Liens Externes</h1>
+                        <p>Gérez les différents profils et plateformes partenaires du restaurant</p>
+                    </div>
+                    <button id="addLinkBtn" class="btn btn-primary">Ajouter un lien</button>
+                </div>
+
+                <div class="panel-card no-padding">
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Plateforme</th>
+                                    <th>Description</th>
+                                    <th>URL du lien</th>
+                                    <th>Visible</th>
+                                    <th>Ordre</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminLinksList">
+                                <!-- Rempli dynamiquement -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VUE ONDULET: TEXTES DU SITE -->
+            <section id="tab-content" class="tab-content">
+                <div class="content-header">
+                    <h1>Textes et Coordonnées du Site</h1>
+                    <p>Modifiez les coordonnées, le titre de l'accueil ou le texte de présentation sans toucher au code</p>
+                </div>
+
+                <form id="siteContentForm">
+                    <div class="content-sections-editor">
+                        
+                        <div class="panel-card">
+                            <h3>Coordonnées & Réseaux Sociaux</h3>
+                            <div class="form-row-editor">
+                                <div class="form-group-editor">
+                                    <label for="set-phone">Téléphone</label>
+                                    <input type="text" id="set-phone" name="phone">
+                                </div>
+                                <div class="form-group-editor">
+                                    <label for="set-restaurant_email">E-mail de contact public</label>
+                                    <input type="email" id="set-restaurant_email" name="restaurant_email">
+                                </div>
+                            </div>
+                            <div class="form-group-editor">
+                                <label for="set-address">Adresse physique</label>
+                                <input type="text" id="set-address" name="address">
+                            </div>
+                            <div class="form-row-editor">
+                                <div class="form-group-editor">
+                                    <label for="set-instagram_url">Lien Instagram</label>
+                                    <input type="url" id="set-instagram_url" name="instagram_url">
+                                </div>
+                                <div class="form-group-editor">
+                                    <label for="set-google_maps_url">Lien Google Maps (Itinéraire)</label>
+                                    <input type="url" id="set-google_maps_url" name="google_maps_url">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel-card">
+                            <h3>Page d'accueil (Titre, Présentation)</h3>
+                            <div class="form-row-editor">
+                                <div class="form-group-editor">
+                                    <label for="set-hero_title">Titre principal de l'accueil</label>
+                                    <input type="text" id="set-hero_title" name="hero_title">
+                                </div>
+                                <div class="form-group-editor">
+                                    <label for="set-hero_subtitle">Sous-titre de l'accueil</label>
+                                    <input type="text" id="set-hero_subtitle" name="hero_subtitle">
+                                </div>
+                            </div>
+                            <div class="form-group-editor">
+                                <label for="set-hero_text">Description de l'accueil</label>
+                                <textarea id="set-hero_text" name="hero_text" rows="3"></textarea>
+                            </div>
+                            <div class="form-group-editor">
+                                <label for="set-reservation_message">Message d'explication des réservations</label>
+                                <textarea id="set-reservation_message" name="reservation_message" rows="2"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="panel-card">
+                            <h3>Référencement SEO</h3>
+                            <div class="form-group-editor">
+                                <label for="set-seo_title">Meta Title principal</label>
+                                <input type="text" id="set-seo_title" name="seo_title">
+                            </div>
+                            <div class="form-group-editor">
+                                <label for="set-seo_description">Meta Description principale</label>
+                                <textarea id="set-seo_description" name="seo_description" rows="2"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="form-actions-bar">
+                        <button type="submit" class="btn btn-primary">Enregistrer les textes</button>
+                    </div>
+                </form>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ============================================================================
+    -- FENETRES MODALES (DIALOGUES)
+    -- ============================================================================ -->
+
+    <!-- 1. MODALE DETAILS RESERVATION -->
+    <dialog id="bookingDetailModal" class="admin-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Détail de la réservation</h2>
+                <button type="button" class="close-modal-btn" onclick="document.getElementById('bookingDetailModal').close()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBookingDetails">
+                <!-- Rempli par javascript -->
+            </div>
+        </div>
+    </dialog>
+
+    <!-- 2. MODALE SAISIE RESERVATION MANUELLE -->
+    <dialog id="manualBookingModal" class="admin-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Saisir une réservation manuelle</h2>
+                <button type="button" class="close-modal-btn" onclick="document.getElementById('manualBookingModal').close()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="manualBookingForm" class="modal-form">
+                    <div class="form-row-editor">
+                        <div class="form-group-editor">
+                            <label for="manLastName">Nom *</label>
+                            <input type="text" id="manLastName" required>
+                        </div>
+                        <div class="form-group-editor">
+                            <label for="manFirstName">Prénom *</label>
+                            <input type="text" id="manFirstName" required>
+                        </div>
+                    </div>
+                    <div class="form-row-editor">
+                        <div class="form-group-editor">
+                            <label for="manPhone">Téléphone *</label>
+                            <input type="tel" id="manPhone" required>
+                        </div>
+                        <div class="form-group-editor">
+                            <label for="manEmail">E-mail</label>
+                            <input type="email" id="manEmail">
+                        </div>
+                    </div>
+                    <div class="form-row-editor flex-three">
+                        <div class="form-group-editor">
+                            <label for="manDate">Date *</label>
+                            <input type="date" id="manDate" required>
+                        </div>
+                        <div class="form-group-editor">
+                            <label for="manTime">Heure *</label>
+                            <input type="time" id="manTime" required>
+                        </div>
+                        <div class="form-group-editor">
+                            <label for="manGuests">Couverts *</label>
+                            <input type="number" id="manGuests" min="1" value="2" required>
+                        </div>
+                    </div>
+                    <div class="form-row-editor">
+                        <div class="form-group-editor">
+                            <label for="manType">Type</label>
+                            <select id="manType">
+                                <option value="dejeuner">Déjeuner</option>
+                                <option value="diner" selected>Dîner</option>
+                                <option value="cocktails">Cocktails / Apéro</option>
+                                <option value="groupe">Groupe</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group-editor">
+                            <label for="manStatus">Statut initial</label>
+                            <select id="manStatus">
+                                <option value="confirmed" selected>Confirmée d'office (Vert)</option>
+                                <option value="pending">En attente (Orange)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group-editor">
+                        <label for="manMessage">Message ou précisions client</label>
+                        <textarea id="manMessage" rows="2"></textarea>
+                    </div>
+                    <div class="form-group-editor">
+                        <label for="manAdminNote">Note interne (Allergies, table préférée...)</label>
+                        <textarea id="manAdminNote" rows="2" placeholder="Visible uniquement par l'équipe..."></textarea>
+                    </div>
+                    
+                    <div class="form-actions-bar modal-actions">
+                        <button type="button" class="btn btn-outline-dark" onclick="document.getElementById('manualBookingModal').close()">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Créer la réservation</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- 3. MODALE CATEGORIE CARTE -->
+    <dialog id="categoryModal" class="admin-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="categoryModalTitle">Ajouter une catégorie</h2>
+                <button type="button" class="close-modal-btn" onclick="document.getElementById('categoryModal').close()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="categoryForm" class="modal-form">
+                    <input type="hidden" id="catId">
+                    <div class="form-group-editor">
+                        <label for="catName">Nom de la catégorie *</label>
+                        <input type="text" id="catName" required placeholder="ex: Suggestions du Chef, Boissons softs...">
+                    </div>
+                    <div class="form-group-editor">
+                        <label for="catDesc">Description</label>
+                        <input type="text" id="catDesc" placeholder="ex: À commander avant 22h...">
+                    </div>
+                    <div class="form-row-editor">
+                        <div class="form-group-editor">
+                            <label for="catSection">Section *</label>
+                            <select id="catSection">
+                                <option value="food" selected>Cuisine (Plats, desserts...)</option>
+                                <option value="drinks">Bar (Cocktails, vins, softs...)</option>
+                            </select>
+                        </div>
+                        <div class="form-group-editor">
+                            <label for="catDisplayOrder">Ordre d'affichage</label>
+                            <input type="number" id="catDisplayOrder" min="0" value="0">
+                        </div>
+                    </div>
+                    <div class="form-group-editor checkbox-row">
+                        <input type="checkbox" id="catIsVisible" checked>
+                        <label for="catIsVisible">Catégorie visible sur le site public</label>
+                    </div>
+                    
+                    <div class="form-actions-bar modal-actions">
+                        <button type="button" class="btn btn-outline-dark" onclick="document.getElementById('categoryModal').close()">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- 4. MODALE PLAT / DISH CARTE -->
+    <dialog id="dishModal" class="admin-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="dishModalTitle">Ajouter un plat / boisson</h2>
+                <button type="button" class="close-modal-btn" onclick="document.getElementById('dishModal').close()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="dishForm" class="modal-form">
+                    <input type="hidden" id="dishId">
+                    <div class="form-row-editor">
+                        <div class="form-group-editor">
+                            <label for="dishName">Nom du plat / boisson *</label>
+                            <input type="text" id="dishName" required placeholder="ex: Entrecôte grillée">
+                        </div>
+                        <div class="form-group-editor">
+                            <label for="dishPrice">Prix (€) *</label>
+                            <input type="number" id="dishPrice" step="0.01" min="0" required placeholder="14.50">
+                        </div>
+                    </div>
+                    <div class="form-row-editor">
+                        <div class="form-group-editor">
+                            <label for="dishCategory">Catégorie *</label>
+                            <select id="dishCategory" required>
+                                <!-- Rempli dynamiquement -->
+                            </select>
+                        </div>
+                        <div class="form-group-editor">
+                            <label for="dishDisplayOrder">Ordre d'affichage</label>
+                            <input type="number" id="dishDisplayOrder" min="0" value="0">
+                        </div>
+                    </div>
+                    <div class="form-group-editor">
+                        <label for="dishDesc">Description / Ingrédients</label>
+                        <textarea id="dishDesc" rows="2" placeholder="ex: Servi avec frites maison et salade..."></textarea>
+                    </div>
+                    <div class="form-group-editor">
+                        <label for="dishAllergens">Allergènes</label>
+                        <input type="text" id="dishAllergens" placeholder="ex: Gluten, Lactose (laisser vide si aucun)">
+                    </div>
+                    <div class="form-row-editor">
+                        <div class="form-group-editor checkbox-row">
+                            <input type="checkbox" id="dishIsVisible" checked>
+                            <label for="dishIsVisible">Visible sur le site public</label>
+                        </div>
+                        <div class="form-group-editor checkbox-row">
+                            <input type="checkbox" id="dishIsFeatured">
+                            <label for="dishIsFeatured">Mettre en avant (Featured)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions-bar modal-actions">
+                        <button type="button" class="btn btn-outline-dark" onclick="document.getElementById('dishModal').close()">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- 5. MODALE UPLOAD D'IMAGE GALERIE -->
+    <dialog id="uploadImageModal" class="admin-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Ajouter une photo à la galerie</h2>
+                <button type="button" class="close-modal-btn" onclick="document.getElementById('uploadImageModal').close()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="uploadImageForm" class="modal-form">
+                    
+                    <!-- Zone Drag & Drop ou Sélection -->
+                    <div class="image-upload-zone" id="imageUploadZone">
+                        <input type="file" id="imageFileInput" accept="image/jpeg,image/jpg,image/png,image/webp" required style="display:none;">
+                        <div class="upload-zone-prompt" id="uploadZonePrompt">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                            <p>Cliquez ou glissez-déposez une image ici</p>
+                            <span>JPG, PNG ou WEBP (Max: 5 Mo)</span>
+                        </div>
+                        <div class="upload-preview-container hidden" id="uploadPreviewContainer">
+                            <img src="" alt="Aperçu" id="imageUploadPreview">
+                            <button type="button" id="removePreviewBtn" class="remove-preview-btn">&times;</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group-editor">
+                        <label for="imgTitle">Titre de l'image (Description courte)</label>
+                        <input type="text" id="imgTitle" placeholder="ex: Notre terrasse en été">
+                    </div>
+                    <div class="form-group-editor">
+                        <label for="imgAltText">Texte alternatif (SEO - Important)</label>
+                        <input type="text" id="imgAltText" placeholder="ex: Terrasse ombragée du restaurant Biscarrosse sous les pins">
+                    </div>
+                    
+                    <div class="form-row-editor">
+                        <div class="form-group-editor">
+                            <label for="imgCategory">Catégorie de photo</label>
+                            <select id="imgCategory">
+                                <option value="terrasse">Terrasse</option>
+                                <option value="plats">Plats</option>
+                                <option value="cocktails">Cocktails</option>
+                                <option value="salle">Salle</option>
+                                <option value="bar">Bar</option>
+                                <option value="ambiance">Ambiance</option>
+                                <option value="extérieur">Extérieur</option>
+                                <option value="autre" selected>Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group-editor">
+                            <label for="imgDisplayOrder">Ordre d'affichage</label>
+                            <input type="number" id="imgDisplayOrder" min="0" value="0">
+                        </div>
+                    </div>
+                    
+                    <div id="uploadFeedback" class="feedback-message error hidden"></div>
+
+                    <div class="form-actions-bar modal-actions">
+                        <button type="button" class="btn btn-outline-dark" onclick="document.getElementById('uploadImageModal').close()">Annuler</button>
+                        <button type="submit" id="uploadSubmitBtn" class="btn btn-primary">
+                            <span class="btn-text">Uploader la photo</span>
+                            <span class="loader hidden"></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- 6. MODALE AVIS CLIENTS -->
+    <dialog id="reviewModal" class="admin-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="reviewModalTitle">Ajouter un avis client</h2>
+                <button type="button" class="close-modal-btn" onclick="document.getElementById('reviewModal').close()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="reviewForm" class="modal-form">
+                    <input type="hidden" id="revId">
+                    <div class="form-row-editor">
+                        <div class="form-group-editor">
+                            <label for="revAuthor">Nom de l'auteur *</label>
+                            <input type="text" id="revAuthor" required placeholder="ex: Jean Dupont">
+                        </div>
+                        <div class="form-group-editor">
+                            <label for="revRating">Note (sur 5) *</label>
+                            <select id="revRating" required>
+                                <option value="5" selected>★★★★★ (5 étoiles)</option>
+                                <option value="4">★★★★☆ (4 étoiles)</option>
+                                <option value="3">★★★☆☆ (3 étoiles)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row-editor">
+                        <div class="form-group-editor">
+                            <label for="revSource">Source de l'avis</label>
+                            <input type="text" id="revSource" value="Google" placeholder="Google, Tripadvisor...">
+                        </div>
+                        <div class="form-group-editor">
+                            <label for="revDate">Date de l'avis</label>
+                            <input type="date" id="revDate">
+                        </div>
+                    </div>
+                    <div class="form-group-editor">
+                        <label for="revSourceUrl">Lien vers l'avis original</label>
+                        <input type="url" id="revSourceUrl" placeholder="https://g.co/kgs/...">
+                    </div>
+                    <div class="form-group-editor">
+                        <label for="revText">Contenu textuel de l'avis *</label>
+                        <textarea id="revText" rows="4" required placeholder="Saisissez ici le texte exact de l'avis client..."></textarea>
+                    </div>
+                    <div class="form-row-editor">
+                        <div class="form-group-editor checkbox-row">
+                            <input type="checkbox" id="revIsVisible" checked>
+                            <label for="revIsVisible">Visible dans le carrousel</label>
+                        </div>
+                        <div class="form-group-editor">
+                            <label for="revDisplayOrder">Ordre d'affichage</label>
+                            <input type="number" id="revDisplayOrder" min="0" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions-bar modal-actions">
+                        <button type="button" class="btn btn-outline-dark" onclick="document.getElementById('reviewModal').close()">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- 7. MODALE LIENS EXTERNES -->
+    <dialog id="linkModal" class="admin-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="linkModalTitle">Ajouter un lien</h2>
+                <button type="button" class="close-modal-btn" onclick="document.getElementById('linkModal').close()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="linkForm" class="modal-form">
+                    <input type="hidden" id="linkId">
+                    <div class="form-group-editor">
+                        <label for="linkPlatform">Plateforme partenaire *</label>
+                        <input type="text" id="linkPlatform" required placeholder="ex: Tripadvisor, Instagram, Office de tourisme...">
+                    </div>
+                    <div class="form-group-editor">
+                        <label for="linkUrl">URL de la page partenaire *</label>
+                        <input type="url" id="linkUrl" required placeholder="https://www.tripadvisor.fr/restaurant...">
+                    </div>
+                    <div class="form-group-editor">
+                        <label for="linkDesc">Description courte</label>
+                        <input type="text" id="linkDesc" placeholder="ex: Retrouvez les avis de nos clients...">
+                    </div>
+                    <div class="form-row-editor">
+                        <div class="form-group-editor checkbox-row">
+                            <input type="checkbox" id="linkIsVisible" checked>
+                            <label for="linkIsVisible">Lien visible sur le site</label>
+                        </div>
+                        <div class="form-group-editor">
+                            <label for="linkDisplayOrder">Ordre d'affichage</label>
+                            <input type="number" id="linkDisplayOrder" min="0" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions-bar modal-actions">
+                        <button type="button" class="btn btn-outline-dark" onclick="document.getElementById('linkModal').close()">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Scripts JavaScript Logic -->
+    <script src="admin.js"></script>
+</body>
+</html>

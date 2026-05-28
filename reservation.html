@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Local -->
+    <title>Réserver une table | Les Tables de la Fontaine à Biscarrosse</title>
+    <meta name="description" content="Réservez votre table en ligne aux Tables de la Fontaine à Biscarrosse. Envoyez votre demande de réservation en quelques secondes pour déjeuner ou dîner en terrasse.">
+    <link rel="canonical" href="https://lestablesdelafontaine-biscarrosse.fr/reservation.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Réserver une table | Les Tables de la Fontaine">
+    <meta property="og:description" content="Envoyez votre demande de réservation en quelques secondes. Confirmation rapide par l'équipe du restaurant.">
+    <meta property="og:url" content="https://lestablesdelafontaine-biscarrosse.fr/reservation.html">
+    <meta property="og:image" content="Images/devanture%20resto.webp">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Images/logo.jpg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Sticky Navigation -->
+    <header class="main-header" id="header">
+        <div class="header-container container">
+            <a href="index.html" class="logo-group">
+                <img src="Images/logo.jpg" alt="Logo Les Tables de la Fontaine" class="header-logo">
+                <div class="logo-text">
+                    <span class="logo-title">Les Tables de la Fontaine</span>
+                    <span class="logo-subtitle">Restaurant & Bar à Cocktails</span>
+                </div>
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="carte.html">La Carte</a></li>
+                    <li><a href="le-lieu.html">Le Lieu</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="reservation.html" class="nav-book-link">Réserver</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="tel:+33635345967" class="btn-icon" aria-label="Appeler le restaurant">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1A11.56 11.56 0 018.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/></svg>
+                    <span class="desktop-text">06 35 34 59 67</span>
+                </a>
+                <a href="reservation.html" class="btn btn-secondary nav-action-btn">Réserver</a>
+                
+                <button class="burger-menu" id="burgerToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu">
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Mobile Coulissant (Overlay) -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <nav class="mobile-nav-menu">
+            <ul>
+                <li><a href="index.html" class="mobile-nav-link">Accueil</a></li>
+                <li><a href="carte.html" class="mobile-nav-link">La Carte</a></li>
+                <li><a href="le-lieu.html" class="mobile-nav-link">Le Lieu</a></li>
+                <li><a href="contact.html" class="mobile-nav-link">Contact & Accès</a></li>
+                <li><a href="reservation.html" class="mobile-nav-link btn btn-primary">Réserver une table</a></li>
+            </ul>
+            <div class="mobile-nav-footer">
+                <a href="tel:+33635345967" class="mobile-contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1A11.56 11.56 0 018.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/></svg>
+                    06 35 34 59 67
+                </a>
+                <p class="mobile-address-item">540 chemin de Bimbo, Biscarrosse</p>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Header Banner -->
+    <section class="page-header-section">
+        <div class="container">
+            <h1>Réservation</h1>
+            <p>Envoyez votre demande de réservation en quelques secondes</p>
+        </div>
+    </section>
+
+    <main>
+        
+        <!-- Reservation Section -->
+        <section id="reserver" class="booking-section section-padding">
+            <div class="container booking-container">
+                <div class="booking-info">
+                    <span class="section-tagline">Réservation</span>
+                    <h2 class="section-title">Réservez votre table</h2>
+                    <p class="section-paragraph">“Envoyez votre demande de réservation en quelques secondes. L’équipe vous recontactera pour confirmer votre table.”</p>
+                    
+                    <div class="booking-notice">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="notice-icon"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        <p><strong>Important :</strong> Votre demande de réservation ne sera confirmée qu'après validation et prise de contact de la part de l'équipe du restaurant.</p>
+                    </div>
+
+                    <div class="booking-direct-channels">
+                        <h3>Réservation immédiate</h3>
+                        <p>Pour une confirmation rapide (notamment pour le service du jour-même), préférez le téléphone ou le SMS :</p>
+                        <div class="direct-buttons-group">
+                            <a href="tel:+33635345967" class="btn btn-secondary">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1A11.56 11.56 0 018.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/></svg>
+                                Appeler le 06 35 34 59 67
+                            </a>
+                            <button type="button" id="smsDirectBtn" class="btn btn-outline-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                Réserver par SMS rapide
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Form -->
+                <div class="booking-form-wrapper">
+                    <form id="bookingForm" class="booking-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bookingLastName">Nom *</label>
+                                <input type="text" id="bookingLastName" required placeholder="Votre nom">
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingFirstName">Prénom *</label>
+                                <input type="text" id="bookingFirstName" required placeholder="Votre prénom">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bookingPhone">Téléphone *</label>
+                                <input type="tel" id="bookingPhone" required placeholder="06 00 00 00 00">
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingEmail">E-mail *</label>
+                                <input type="email" id="bookingEmail" required placeholder="nom@exemple.com">
+                            </div>
+                        </div>
+
+                        <div class="form-row flex-three">
+                            <div class="form-group">
+                                <label for="bookingDate">Date *</label>
+                                <input type="date" id="bookingDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingTime">Heure *</label>
+                                <select id="bookingTime" required>
+                                    <option value="" disabled selected>Choisir...</option>
+                                    <optgroup label="Service Midi">
+                                        <option value="12:00">12:00</option>
+                                        <option value="12:30">12:30</option>
+                                        <option value="13:00">13:00</option>
+                                        <option value="13:30">13:30</option>
+                                    </optgroup>
+                                    <optgroup label="Service Soir">
+                                        <option value="19:00">19:00</option>
+                                        <option value="19:30">19:30</option>
+                                        <option value="20:00">20:00</option>
+                                        <option value="20:30">20:30</option>
+                                        <option value="21:00">21:00</option>
+                                        <option value="21:30">21:30</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingGuests">Personnes *</label>
+                                <select id="bookingGuests" required>
+                                    <option value="1">1 personne</option>
+                                    <option value="2" selected>2 personnes</option>
+                                    <option value="3">3 personnes</option>
+                                    <option value="4">4 personnes</option>
+                                    <option value="5">5 personnes</option>
+                                    <option value="6">6 personnes</option>
+                                    <option value="7">7 personnes</option>
+                                    <option value="8">8 personnes</option>
+                                    <option value="more">Plus de 8 (Préciser en message)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bookingType">Type de réservation *</label>
+                            <select id="bookingType" required>
+                                <option value="Déjeuner">Déjeuner (Repas midi)</option>
+                                <option value="Dîner">Dîner (Repas soir)</option>
+                                <option value="Cocktails / apéritif">Apéritif / Cocktails en terrasse</option>
+                                <option value="Groupe">Événement / Repas de groupe</option>
+                                <option value="Autre">Autre demande</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bookingMessage">Commentaires ou demandes particulières (Allergies, table enfant...)</label>
+                            <textarea id="bookingMessage" rows="3" placeholder="Indiquez ici vos précisions..."></textarea>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="bookingGdpr" required>
+                            <label for="bookingGdpr">J’accepte que Les Tables de la Fontaine utilise mes informations pour traiter ma demande de réservation. *</label>
+                        </div>
+
+                        <!-- Champ honeypot anti-spam caché -->
+                        <div style="display:none;">
+                            <label for="bookingHoneypot">Ne rien saisir ici</label>
+                            <input type="text" id="bookingHoneypot" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <!-- Options de soumission dynamiques -->
+                        <div class="form-submit-actions" style="margin-top:20px;">
+                            <button type="submit" id="submitBooking" class="btn btn-primary" style="width:100%; justify-content:center; padding:14px; font-weight:600;">
+                                Envoyer ma demande de réservation
+                            </button>
+                        </div>
+
+                        <!-- Zone de Message de succès -->
+                        <div id="bookingFeedback" class="booking-feedback hidden" style="margin-top:20px; padding:15px; border-radius:8px; font-size:14px;"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <!-- Brand Column -->
+            <div class="footer-col brand-col">
+                <div class="footer-logo-group">
+                    <img src="Images/logo.jpg" alt="Logo Les Tables de la Fontaine" class="footer-logo-img">
+                    <span class="footer-logo">Les Tables de la Fontaine</span>
+                </div>
+                <p class="footer-desc">Restaurant de cuisine française conviviale et bar à cocktails niché dans un cadre calme, boisé et naturel à Biscarrosse.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/lestablesdelafontaine40" target="_blank" rel="noopener noreferrer" aria-label="Suivre sur Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="feather"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="https://share.google/PISvZEtCB66CvocP8" target="_blank" rel="noopener noreferrer" aria-label="Nous trouver sur Google Maps">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"></circle><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Links Column -->
+            <div class="footer-col links-col">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="carte.html">La Carte</a></li>
+                    <li><a href="le-lieu.html">Le Lieu</a></li>
+                    <li><a href="contact.html">Contact & Accès</a></li>
+                    <li><a href="reservation.html">Réservation</a></li>
+                </ul>
+            </div>
+
+            <!-- Hours Column -->
+            <div class="footer-col hours-col">
+                <h3>Horaires de service</h3>
+                <p><strong>Midi :</strong> 10h00 – 14h00</p>
+                <p><strong>Soir :</strong> 17h30 – 22h00</p>
+                <p class="hours-note">Service continu sur les boissons fraîches durant les beaux jours d'été. Pensez à appeler en cas de doute.</p>
+            </div>
+
+            <!-- Contact/Location Column -->
+            <div class="footer-col info-col">
+                <h3>Contact & Accès</h3>
+                <p>540 chemin de Bimbo<br>40600 Biscarrosse</p>
+                <p><a href="tel:+33635345967" class="footer-phone-link">06 35 34 59 67</a></p>
+                <p>Instagram : <a href="https://www.instagram.com/lestablesdelafontaine40" target="_blank" rel="noopener noreferrer">@lestablesdelafontaine40</a></p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p>&copy; 2026 Les Tables de la Fontaine. Tous droits réservés.</p>
+                <div class="footer-legal-links">
+                    <a href="mentions-legales.html" class="btn-text">Mentions Légales</a>
+                    <span class="separator">|</span>
+                    <a href="politique-confidentialite.html" class="btn-text">Politique de Confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Barre Fixe Mobile Tactile -->
+    <div class="mobile-sticky-bar">
+        <a href="tel:+33635345967" class="mobile-sticky-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1A11.56 11.56 0 018.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/></svg>
+            <span>Appeler</span>
+        </a>
+        <a href="reservation.html" class="mobile-sticky-item center-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>Réserver</span>
+        </a>
+        <a href="contact.html" class="mobile-sticky-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"></circle><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"></path></svg>
+            <span>Itinéraire</span>
+        </a>
+    </div>
+
+    <!-- Floating Back-to-Top Button -->
+    <button class="back-to-top" id="backToTopBtn" aria-label="Retour en haut de page">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <!-- Scripts JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

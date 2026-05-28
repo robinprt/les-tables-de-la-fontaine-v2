@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Local -->
+    <title>La Carte - Cuisine & Cocktails | Les Tables de la Fontaine à Biscarrosse</title>
+    <meta name="description" content="Découvrez la carte du restaurant Les Tables de la Fontaine à Biscarrosse. Cuisine française savoureuse, suggestions de saison et cocktails de création en terrasse.">
+    <link rel="canonical" href="https://lestablesdelafontaine-biscarrosse.fr/carte.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="La Carte - Cuisine & Cocktails | Les Tables de la Fontaine">
+    <meta property="og:description" content="Suggestions fraîches, plats traditionnels généreux et créations cocktails maison. Réservez votre table sous les pins.">
+    <meta property="og:url" content="https://lestablesdelafontaine-biscarrosse.fr/carte.html">
+    <meta property="og:image" content="Images/plat.webp">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Images/logo.jpg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Sticky Navigation -->
+    <header class="main-header" id="header">
+        <div class="header-container container">
+            <a href="index.html" class="logo-group">
+                <img src="Images/logo.jpg" alt="Logo Les Tables de la Fontaine" class="header-logo">
+                <div class="logo-text">
+                    <span class="logo-title">Les Tables de la Fontaine</span>
+                    <span class="logo-subtitle">Restaurant & Bar à Cocktails</span>
+                </div>
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="carte.html">La Carte</a></li>
+                    <li><a href="le-lieu.html">Le Lieu</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="reservation.html" class="nav-book-link">Réserver</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="tel:+33635345967" class="btn-icon" aria-label="Appeler le restaurant">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1A11.56 11.56 0 018.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/></svg>
+                    <span class="desktop-text">06 35 34 59 67</span>
+                </a>
+                <a href="reservation.html" class="btn btn-secondary nav-action-btn">Réserver</a>
+                
+                <button class="burger-menu" id="burgerToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu">
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Mobile Coulissant (Overlay) -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <nav class="mobile-nav-menu">
+            <ul>
+                <li><a href="index.html" class="mobile-nav-link">Accueil</a></li>
+                <li><a href="carte.html" class="mobile-nav-link">La Carte</a></li>
+                <li><a href="le-lieu.html" class="mobile-nav-link">Le Lieu</a></li>
+                <li><a href="contact.html" class="mobile-nav-link">Contact & Accès</a></li>
+                <li><a href="reservation.html" class="mobile-nav-link btn btn-primary">Réserver une table</a></li>
+            </ul>
+            <div class="mobile-nav-footer">
+                <a href="tel:+33635345967" class="mobile-contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1A11.56 11.56 0 018.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/></svg>
+                    06 35 34 59 67
+                </a>
+                <p class="mobile-address-item">540 chemin de Bimbo, Biscarrosse</p>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Header Banner -->
+    <section class="page-header-section">
+        <div class="container">
+            <h1>Notre Carte</h1>
+            <p>Une cuisine française conviviale et des cocktails d'été à savourer en terrasse</p>
+        </div>
+    </section>
+
+    <main>
+        
+        <!-- Cuisine Section -->
+        <section id="cuisine" class="cuisine-section section-padding">
+            <div class="container">
+                <div class="cuisine-container">
+                    <div class="cuisine-visual">
+                        <div class="cuisine-grid">
+                            <img src="Images/plat.webp" alt="Plat fait maison" loading="lazy" class="rounded-img">
+                            <img src="Images/carpaccio.webp" alt="Carpaccio de boeuf" loading="lazy" class="rounded-img">
+                            <img src="Images/plats 5.webp" alt="Planche garnie" loading="lazy" class="rounded-img">
+                        </div>
+                    </div>
+                    
+                    <div class="cuisine-text">
+                        <span class="section-tagline">Cuisine</span>
+                        <h2 class="section-title">Une cuisine française simple et généreuse</h2>
+                        <p class="section-paragraph">“Une cuisine qui fait plaisir, des plats généreux, des suggestions selon la saison et une carte pensée pour se faire plaisir, midi et soir.”</p>
+                        <p class="section-paragraph">Découvrez ci-dessous l'ensemble de nos plats cuisinés maison, élaborés à partir de produits frais et de viandes d'origine française.</p>
+                        
+                        <div class="cuisine-ctas" style="margin-top: 30px;">
+                            <a href="reservation.html" class="btn btn-primary">Réserver une table</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOOD MENU GRID -->
+                <div class="menu-grid-full">
+                    <!-- Column 1: A Partager, Entrees & Pinsa -->
+                    <div class="menu-column-left">
+                        
+                        <!-- À Partager -->
+                        <h3 class="menu-section-title">À Partager</h3>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Les 6 huîtres du Bassin</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">11,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Huîtres fraîches en provenance directe du Bassin d'Arcachon.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Planche de charcuterie / Mixte</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">15,00 € / 17,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Sélection de charcuteries fines et fromages affinés à partager.</p>
+                        </div>
+
+                        <!-- Les Entrées -->
+                        <h3 class="menu-section-title">Les Entrées</h3>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Le carpaccio de bœuf et petits légumes</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">13,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Fines tranches de bœuf assaisonnées, accompagnées de petits légumes croquants.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Les os à moelle rôtis</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">12,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Os à moelle rôtis au four, servis avec leurs condiments et toasts grillés.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">La burrata et velouté de tomates fraîches</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">14,50 €</span>
+                            </div>
+                            <p class="menu-item-desc">Burrata crémeuse sur son lit de velouté de tomates fraîches de saison.</p>
+                        </div>
+
+                        <!-- La Pinsa du Moment -->
+                        <h3 class="menu-section-title">La Pinsa du Moment</h3>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">La Pinsa romaine</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">13,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Pizza romaine traditionnelle à pâte légère et croustillante, garniture selon l'inspiration du chef.</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Column 2: Poissons & Viandes -->
+                    <div class="menu-column-right">
+                        
+                        <!-- Les Poissons -->
+                        <h3 class="menu-section-title">Les Poissons</h3>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Les calamars au chorizo</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">19,50 €</span>
+                            </div>
+                            <p class="menu-item-desc">Calamars snackés à la plancha, accompagnés de dés de chorizo grillés.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Le pavé de thon</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">22,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Pavé de thon cuit à cœur ou mi-cuit selon votre convenance.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Le dos de daurade royale</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">22,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Dos de daurade royale cuit sur peau, jus d'herbes fines.</p>
+                        </div>
+
+                        <!-- Les Viandes -->
+                        <h3 class="menu-section-title">Les Viandes</h3>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Le pavé de Rumsteak</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">25,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Morceau choisi de rumsteak tendre et juteux, grillé selon votre goût.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">La côte de veau, crème champignons</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">26,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Côte de veau épaisse poêlée, nappe d'une sauce onctueuse aux champignons.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Le burger classique</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">15,50 €</span>
+                            </div>
+                            <p class="menu-item-desc">Steak haché de bœuf frais, fromage fondu, oignons caramélisés et frites maison.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Les cœurs de canard en persillade</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">19,50 €</span>
+                            </div>
+                            <p class="menu-item-desc">Cœurs de canard sautés à la poêle avec ail frais et persil du jardin.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- DESSERTS SECTION (FULL WIDTH GRID & NOTES) -->
+                <div class="desserts-section-wrapper" style="margin-top: 60px;">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <h3 class="menu-section-title" style="display: inline-block; border-bottom: 2px solid var(--color-sand); padding-bottom: 8px; width: 100%; max-width: 300px; margin: 0 auto; text-align: center; justify-content: center;">Les Desserts</h3>
+                    </div>
+                    
+                    <div class="menu-grid-full" style="margin-top: 20px;">
+                        <!-- Column 1: Desserts Gauche -->
+                        <div class="menu-column-left">
+                            <div class="menu-item">
+                                <div class="menu-item-row">
+                                    <span class="menu-item-name">La brioche perdue gourmande</span>
+                                    <span class="menu-item-dots"></span>
+                                    <span class="menu-item-price">7,00 €</span>
+                                </div>
+                                <p class="menu-item-desc">Brioche épaisse caramélisée, boule de glace vanille et caramel au beurre salé.</p>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-row">
+                                    <span class="menu-item-name">Le nougat glacé, coulis de fruits rouges</span>
+                                    <span class="menu-item-dots"></span>
+                                    <span class="menu-item-price">7,00 €</span>
+                                </div>
+                                <p class="menu-item-desc">Nougat glacé maison agrémenté d'éclats d'amandes et de pistaches.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Column 2: Desserts Droite -->
+                        <div class="menu-column-right">
+                            <div class="menu-item">
+                                <div class="menu-item-row">
+                                    <span class="menu-item-name">La crème brûlée au citron vert</span>
+                                    <span class="menu-item-dots"></span>
+                                    <span class="menu-item-price">7,00 €</span>
+                                </div>
+                                <p class="menu-item-desc">Crème brûlée onctueuse parfumée au zeste et jus de citron vert frais.</p>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-row">
+                                    <span class="menu-item-name">Le fondant au chocolat</span>
+                                    <span class="menu-item-dots"></span>
+                                    <span class="menu-item-price">7,00 €</span>
+                                </div>
+                                <p class="menu-item-desc">Cœur coulant au chocolat noir, accompagné d'une crème anglaise.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Kid's Menu & Footer Notes -->
+                        <div class="menu-footer-notes">
+                            <p><strong>MENU ENFANT (-12 ans) — 12,00 €</strong></p>
+                            <p>Sirop au choix à l'eau + Tenders de poulet ou Cordon bleu croustillant + Frites maison + 2 boules de glace au choix.</p>
+                            <hr style="border: 0; border-top: 1px solid rgba(22, 105, 155, 0.15); margin: 12px 0;">
+                            <p>Toutes nos viandes sont d'origine française.</p>
+                            <p>Les accompagnements et les sauces changent chaque jour selon les arrivages. Pain en supplément à 1,00 €.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Cocktails Section -->
+        <section id="cocktails" class="cocktails-section section-padding alternate-bg" style="background-image: linear-gradient(rgba(240, 230, 215, 0.95), rgba(250, 246, 237, 0.98)), url('Images/tireuse a biere terasse.webp');">
+            <div class="container">
+                <div class="cocktails-container">
+                    <div class="cocktails-text">
+                        <span class="section-tagline">Le Bar</span>
+                        <h2 class="section-title">Cocktails, apéritifs et mocktails rafraîchissants</h2>
+                        <p class="section-paragraph">“Classiques, créations signatures ou boissons fraîches sans alcool : installez-vous en terrasse sous les pins landais et savourez un moment suspendu.”</p>
+                        
+                        <div class="cocktails-ctas" style="margin-top: 30px;">
+                            <a href="reservation.html" class="btn btn-primary">Réserver pour boire un verre</a>
+                            <a href="https://www.instagram.com/lestablesdelafontaine40" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="feather"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Suivre sur Instagram
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="cocktails-visual">
+                        <div class="cocktails-single-card">
+                            <img src="Images/cocktails.webp" alt="Cocktails servis en terrasse" loading="lazy" class="rounded-img">
+                            <div class="cocktails-overlay-card">
+                                <h4>Ambiance Jardin & Pins</h4>
+                                <p>Le cocktail parfait pour accompagner vos fins de journées d'été.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DRINKS MENU GRID -->
+                <div class="menu-grid-full">
+                    <!-- Column 1: Cocktails -->
+                    <div class="menu-column-left">
+                        <h3 class="menu-section-title">Les Cocktails <span class="section-price-note">9,00 €</span></h3>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Mojito</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">9,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Rhum, menthe fraîche, citron vert, sucre de canne, eau gazeuse.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Caipirinha</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">9,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Cachaça, citron vert frais pilé, sucre.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Americano</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">9,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Campari, Vermouth rouge, eau gazeuse.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Irish Coffee</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">9,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Whiskey irlandais, café chaud, sucre, crème fouettée maison.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Expresso Martini</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">9,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Vodka, liqueur de café Kahlúa, café expresso fraîchement serré.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Piña Colada</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">9,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Rhum, jus d'ananas, crème de noix de coco.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Spritz</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">9,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Apérol, Prosecco, trait d'eau gazeuse, tranche d'orange.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Spritz St-Germain</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">9,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Liqueur de sureau St-Germain, Prosecco, eau gazeuse, citron.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Sex on the Beach</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">9,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Vodka, liqueur de pêche, jus d'orange, coulis de cranberry.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Cocktail de fruits</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">9,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Cocktail alcoolisé avec sélection de jus et fruits de saison.</p>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Mocktails & Softs -->
+                    <div class="menu-column-right">
+                        <h3 class="menu-section-title">Les Mocktails <span class="section-price-note">Sans Alcool</span></h3>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Mocktail de fruits</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">8,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Mélange frais et fruité de jus de saison pressés.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Virgin Mojito</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">8,00 €</span>
+                            </div>
+                            <p class="menu-item-desc">Menthe fraîche, citron vert pilé, sucre de canne, Ginger Ale.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Virgin Piña Colada</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">7,50 €</span>
+                            </div>
+                            <p class="menu-item-desc">Jus d'ananas bien frais, nectar et crème de noix de coco.</p>
+                        </div>
+
+                        <h3 class="menu-section-title">Les Softs <span class="section-price-note">3,20 €</span></h3>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Coca-Cola, Zéro, Cherry</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">3,20 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Oasis Tropical</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">3,20 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Ice Tea Lipton</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">3,20 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Orangina</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">3,20 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Cacolac</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">3,20 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Schweppes Tonic / Agrumes</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">3,20 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Perrier</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">3,20 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-row">
+                                <span class="menu-item-name">Jus de fruits</span>
+                                <span class="menu-item-dots"></span>
+                                <span class="menu-item-price">3,20 €</span>
+                            </div>
+                            <p class="menu-item-desc">Au choix : orange, pomme, etc.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brunch Section -->
+        <section id="brunch" class="brunch-section">
+            <div class="container">
+                <div class="brunch-header">
+                    <span class="section-tagline">Dimanche</span>
+                    <h2 class="section-title" style="color: var(--color-forest);">Le Brunch Dominical</h2>
+                    <p class="section-paragraph">Venez partager un moment gourmand et suspendu en terrasse. Tous les dimanches, notre formule brunch complète saura ravir petits et grands.</p>
+                </div>
+
+                <div class="brunch-card">
+                    <h3 class="brunch-formula-title">Notre Formule Brunch</h3>
+                    <div class="brunch-formula-price">24,00 €</div>
+                    <p><em>Servi tous les dimanches de 11h00 à 14h00. Une table boisée, calme et un buffet généreux.</em></p>
+                    
+                    <ul class="brunch-items-list">
+                        <li>Boissons chaudes au choix (café, thé, chocolat)</li>
+                        <li>Jus de fruits frais pressés</li>
+                        <li>Viennoiseries croustillantes du jour</li>
+                        <li>Assortiment de pains & confitures artisanales</li>
+                        <li>Œufs brouillés et bacon grillé</li>
+                        <li>Sélection de fromages affinés de nos régions</li>
+                        <li>Salade de fruits frais de saison</li>
+                    </ul>
+                    
+                    <a href="reservation.html" class="btn btn-primary" style="margin-top: 20px;">Réserver mon Brunch du dimanche</a>
+                    <p class="brunch-card-note">* Réservation fortement conseillée pour le brunch dominical en terrasse.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <!-- Brand Column -->
+            <div class="footer-col brand-col">
+                <div class="footer-logo-group">
+                    <img src="Images/logo.jpg" alt="Logo Les Tables de la Fontaine" class="footer-logo-img">
+                    <span class="footer-logo">Les Tables de la Fontaine</span>
+                </div>
+                <p class="footer-desc">Restaurant de cuisine française conviviale et bar à cocktails niché dans un cadre calme, boisé et naturel à Biscarrosse.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/lestablesdelafontaine40" target="_blank" rel="noopener noreferrer" aria-label="Suivre sur Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="feather"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="https://share.google/PISvZEtCB66CvocP8" target="_blank" rel="noopener noreferrer" aria-label="Nous trouver sur Google Maps">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"></circle><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Links Column -->
+            <div class="footer-col links-col">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="carte.html">La Carte</a></li>
+                    <li><a href="le-lieu.html">Le Lieu</a></li>
+                    <li><a href="contact.html">Contact & Accès</a></li>
+                    <li><a href="reservation.html">Réservation</a></li>
+                </ul>
+            </div>
+
+            <!-- Hours Column -->
+            <div class="footer-col hours-col">
+                <h3>Horaires de service</h3>
+                <p><strong>Midi :</strong> 10h00 – 14h00</p>
+                <p><strong>Soir :</strong> 17h30 – 22h00</p>
+                <p class="hours-note">Service continu sur les boissons fraîches durant les beaux jours d'été. Pensez à appeler en cas de doute.</p>
+            </div>
+
+            <!-- Contact/Location Column -->
+            <div class="footer-col info-col">
+                <h3>Contact & Accès</h3>
+                <p>540 chemin de Bimbo<br>40600 Biscarrosse</p>
+                <p><a href="tel:+33635345967" class="footer-phone-link">06 35 34 59 67</a></p>
+                <p>Instagram : <a href="https://www.instagram.com/lestablesdelafontaine40" target="_blank" rel="noopener noreferrer">@lestablesdelafontaine40</a></p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p>&copy; 2026 Les Tables de la Fontaine. Tous droits réservés.</p>
+                <div class="footer-legal-links">
+                    <a href="mentions-legales.html" class="btn-text">Mentions Légales</a>
+                    <span class="separator">|</span>
+                    <a href="politique-confidentialite.html" class="btn-text">Politique de Confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Barre Fixe Mobile Tactile -->
+    <div class="mobile-sticky-bar">
+        <a href="tel:+33635345967" class="mobile-sticky-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1A11.56 11.56 0 018.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/></svg>
+            <span>Appeler</span>
+        </a>
+        <a href="reservation.html" class="mobile-sticky-item center-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>Réserver</span>
+        </a>
+        <a href="contact.html" class="mobile-sticky-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"></circle><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"></path></svg>
+            <span>Itinéraire</span>
+        </a>
+    </div>
+
+    <!-- Floating Back-to-Top Button -->
+    <button class="back-to-top" id="backToTopBtn" aria-label="Retour en haut de page">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <!-- Scripts JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
